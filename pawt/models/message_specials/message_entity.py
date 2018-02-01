@@ -1,0 +1,93 @@
+from ..base import PAWTBase
+from ...models import user
+
+
+class MessageEntity(PAWTBase):
+    @staticmethod
+    def build(tg, data, text):
+        t = data['type']
+        return type_map[t](tg, data, text)
+
+    @property
+    def content(self):
+        return self._text[self.offset:self.offset + self.length]
+
+    def __init__(self, tg, data, text):
+        super().__init__(tg)
+
+        self._text = text
+
+        self.offset = data['offset']
+        self.length = data['length']
+
+    def __repr__(self):
+        return '<{class_name}: {content}>'.format(
+            class_name=self.__class__.__name__, content=self.content
+        )
+
+    def __str__(self):
+        return self.content
+
+    def __eq__(self, other):
+        return str(self) == str(other)
+
+
+class Mention(MessageEntity):
+    pass
+
+
+class Hashtag(MessageEntity):
+    pass
+
+
+class BotCommand(MessageEntity):
+    pass
+
+
+class Url(MessageEntity):
+    pass
+
+
+class Email(MessageEntity):
+    pass
+
+
+class Bold(MessageEntity):
+    pass
+
+
+class Italic(MessageEntity):
+    pass
+
+
+class Code(MessageEntity):
+    pass
+
+
+class Pre(MessageEntity):
+    pass
+
+
+class TextLink(MessageEntity):
+    def __init__(self, tg, data, text):
+        super().__init__(tg, data, text)
+        self.url = data['url']
+
+
+class TextMention(MessageEntity):
+    def __init__(self, tg, data, text):
+        super().__init__(tg, data, text)
+        self.user = user.User(tg, data=data['user'])
+
+
+type_map = {'mention': Mention,
+            'hashtag': Hashtag,
+            'bot_command': BotCommand,
+            'url': Url,
+            'email': Email,
+            'bold': Bold,
+            'italic': Italic,
+            'code': Code,
+            'pre': Pre,
+            'text_link': TextLink,
+            'text_mention': TextMention}

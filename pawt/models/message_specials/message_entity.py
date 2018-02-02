@@ -41,7 +41,9 @@ class Hashtag(MessageEntity):
 
 
 class BotCommand(MessageEntity):
-    pass
+    @property
+    def command(self):
+        return str(self).split('@')[0]  # strips any @ tag at the end
 
 
 class Url(MessageEntity):

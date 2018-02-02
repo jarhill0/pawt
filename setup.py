@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 print()
 
-version = '0.0.1a1'
+version = '0.0.1a2'
 
 setup(name='pawt',
       description='Pre-alpha Telegram API wrapper',

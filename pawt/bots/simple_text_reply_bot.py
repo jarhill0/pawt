@@ -19,7 +19,7 @@ class SimpleTextReplyBot(TelegramBotInterface):
         for ent in entities:
             if not isinstance(ent, BotCommand):
                 continue
-            response = self.get_response(str(ent))
+            response = self.get_response(ent.command)
             if response:
                 message.reply.send_message(response)
 

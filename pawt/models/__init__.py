@@ -1,9 +1,2 @@
-from .chat import Chat
-from .file import File
-from .mask_position import MaskPosition
-from .message import Message
-from .photo_size import PhotoSize
-from .sticker import Sticker
-from .sticker_set import StickerSet
-from .update import Update
-from .user import User
+from .base import PAWTBase, PAWTLazy, Sendable
+from .main_models import *

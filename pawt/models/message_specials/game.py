@@ -1,7 +1,6 @@
 from .animation import Animation
 from .message_entity import MessageEntity
 from ..base import PAWTBase
-from ...models import photo_size
 
 
 class Game(PAWTBase):
@@ -10,7 +9,7 @@ class Game(PAWTBase):
 
         self.title = data['title']
         self.description = data['description']
-        self.photo = [photo_size.PhotoSize(tg, ps) for ps in data['photo']]
+        self.photo = [tg.photo_size(data=ps) for ps in data['photo']]
         self.text = data.get('text')
 
         if data.get('text_entities'):

@@ -1,6 +1,5 @@
 from ..base import PAWTBase
 from ..message_specials import Location
-from ..user import User
 from ...const import API_PATH
 
 
@@ -8,7 +7,7 @@ class InlineQuery(PAWTBase):
     def __init__(self, tg, data):
         super().__init__(tg)
         self.id = data['id']
-        self.user = User(tg, data=data['from'])
+        self.user = tg.user(data=data['from'])
         self.from_ = self.user
         self.query = data['query']
         self.offset = data['query']

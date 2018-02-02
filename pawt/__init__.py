@@ -6,3 +6,5 @@ from .models.message_specials import (Bold, BotCommand, Code, Email, Hashtag,
 from .models.reply_markup import InlineKeyboardMarkupBuilder, \
     ReplyKeyboardMarkupBuilder, force_reply, reply_keyboard_remove
 from .telegram import Telegram
+
+__version__ = '0.0.1a3'

@@ -1,5 +1,4 @@
-from .base import PAWTBase
-from ..models import user
+from ..base import PAWTBase
 
 
 class ChatMember(PAWTBase):
@@ -15,7 +14,7 @@ class ChatMember(PAWTBase):
         super().__init__(tg)
 
         user_data = data['user']
-        self.user = user.User(self._tg, user_data)
+        self.user = self._tg.user(data=user_data)
         del data['user']
 
         for attr_name in ChatMember.KNOWN_ATTRS:

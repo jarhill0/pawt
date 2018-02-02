@@ -1,7 +1,6 @@
+from .inline_message import InlineMessage
 from ..base import PAWTBase
-from ..message import Message
-from ..other_queries import inline_message as im_mod
-from ..user import User
+from ..main_models.message import Message
 from ...const import API_PATH
 
 
@@ -10,7 +9,7 @@ class CallbackQuery(PAWTBase):
         super().__init__(tg)
 
         self.id = data['id']
-        self.user = User(data['from'])
+        self.user = tg.user(data=data['from'])
         self.from_ = self.user
         self.message = None
         self.inline_message = None
@@ -21,9 +20,7 @@ class CallbackQuery(PAWTBase):
         if data.get('message'):
             self.message = Message(tg, data['message'])
         if data.get('inline_message_id'):
-            self.inline_message = im_mod.InlineMessage(tg,
-                                                       data[
-                                                           'inline_message_id'])
+            self.inline_message = InlineMessage(tg, data['inline_message_id'])
 
     def __repr__(self):
         return '<CallbackQuery {}>'.format(self.id)

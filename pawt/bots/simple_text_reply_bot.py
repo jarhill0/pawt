@@ -1,5 +1,5 @@
-from pawt.models.message_specials import BotCommand
 from .bot import TelegramBotInterface
+from ..models.message_specials import BotCommand
 
 
 class SimpleTextReplyBot(TelegramBotInterface):

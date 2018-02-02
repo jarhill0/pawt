@@ -1,14 +1,12 @@
 from enum import Enum
 from json import dumps
 
-from .base import PAWTLazy
-from .input_media import MediaGroupBuilder
-from .message_specials import Photo, Video
-from .message_specials.base import FileWrapper
-from ..const import API_PATH
-from ..exceptions import BadArgument
-from ..models import chat_member, chat_photo, file, message, \
-    sticker as sticker_mod, sticker_set as ss_mod, user as us_mod
+from .chat_member import ChatMember
+from .chat_photo import ChatPhoto
+from ..base import PAWTLazy
+from ...const import API_PATH
+from ...exceptions import BadArgument
+from ...models.message_specials import Photo, Video
 
 
 class ChatType(Enum):
@@ -26,15 +24,15 @@ class Chat(PAWTLazy):
 
     @staticmethod
     def _coerce_userlike_obj(user):
-        if isinstance(user, chat_member.ChatMember):
+        if hasattr(user, 'user'):
             user = user.user
-        if isinstance(user, us_mod.User):
+        if hasattr(user, 'id'):
             user = user.id
         return str(user)
 
     @staticmethod
     def _coerce_messagelike_obj(msg):
-        if isinstance(msg, message.Message):
+        if hasattr(msg, 'id'):
             msg = msg.id
         return str(msg)
 
@@ -81,13 +79,12 @@ class Chat(PAWTLazy):
 
         photo = data.get('photo')
         if photo:
-            self.photo = chat_photo.ChatPhoto(self._tg, photo)
+            self.photo = ChatPhoto(self._tg, photo)
         else:
             self.photo = None
 
         if data.get('pinned_message'):
-            self.pinned_message = message.Message(self._tg,
-                                                  data['pinned_message'])
+            self.pinned_message = self._tg.message(data['pinned_message'])
         else:
             self.pinned_message = None
 
@@ -110,12 +107,12 @@ class Chat(PAWTLazy):
         user_id = self._coerce_userlike_obj(user)
         data = self._tg.get(API_PATH['get_chat_member'],
                             data=dict(chat_id=self.id, user_id=user_id))
-        return chat_member.ChatMember(self._tg, data)
+        return ChatMember(self._tg, data)
 
     def get_administrators(self):
         data = self._tg.get(API_PATH['get_chat_administrators'],
                             data=dict(chat_id=self.id))
-        return [chat_member.ChatMember(self._tg, m) for m in data]
+        return [ChatMember(self._tg, m) for m in data]
 
     def promote_member(self, user, **opts):
         user_id = self._coerce_userlike_obj(user)
@@ -140,7 +137,7 @@ class Chat(PAWTLazy):
                              data=dict(chat_id=self.id, title=title))
 
     def set_sticker_set(self, sticker_set):
-        if isinstance(sticker_set, ss_mod.StickerSet):
+        if hasattr(sticker_set, 'name'):
             sticker_set = sticker_set.name
         assert isinstance(sticker_set, str)
         return self._tg.post(API_PATH['set_chat_sticker_set'],
@@ -175,7 +172,7 @@ class Chat(PAWTLazy):
                                        user_id=user_id))
 
     def pin_message(self, msg, disable_notification=None):
-        if isinstance(msg, message.Message):
+        if hasattr(msg, 'pin'):
             return msg.pin()
 
         data = dict(chat_id=self.id, message_id=str(msg))
@@ -193,9 +190,9 @@ class Chat(PAWTLazy):
 
     def _file_post_helper(self, api_path, data, possible_file,
                           file_param_name, files=None):
-        if isinstance(possible_file, FileWrapper):
+        if hasattr(possible_file, 'file'):
             possible_file = possible_file.file
-        if isinstance(possible_file, file.File):
+        if hasattr(possible_file, 'id'):
             possible_file = possible_file.id
         if isinstance(possible_file, str):
             data[file_param_name] = possible_file
@@ -204,14 +201,14 @@ class Chat(PAWTLazy):
                 files = dict()
             files[file_param_name] = possible_file
         response = self._tg.post(api_path, data=data, files=files)
-        return message.Message(self._tg, data=response)
+        return self._tg.message(data=response)
 
     def _send_helper(self, disable_notification, reply_to, reply_markup):
         data = dict(chat_id=self.id)
         if disable_notification is not None:  # can be False
             data['disable_notification'] = disable_notification
         if reply_to:
-            if isinstance(reply_to, message.Message):
+            if hasattr(reply_to, 'id'):
                 reply_to_message_id = reply_to.id
             else:
                 reply_to_message_id = str(reply_to)
@@ -222,7 +219,7 @@ class Chat(PAWTLazy):
 
     def _post_and_return_message(self, api_path, data, files=None):
         response = self._tg.post(api_path, data=data, files=files)
-        return message.Message(self._tg, data=response)
+        return self._tg.message(data=response)
 
     def send_message(self, text, parse_mode=None,
                      disable_web_page_preview=None,
@@ -339,7 +336,7 @@ class Chat(PAWTLazy):
 
         response = self._tg.post(API_PATH['send_media_group'], data=info,
                                  files=builder.files)
-        return [message.Message(self._tg, m) for m in response]
+        return [self._tg.message(data=message) for message in response]
 
     def send_venue(self, venue=None, latitude=None, longitude=None, title=None,
                    address=None, foursquare_id=None, disable_notification=None,
@@ -470,7 +467,7 @@ class Chat(PAWTLazy):
 
     def forward_message(self, from_chat, message_id, disable_notification=None):
         info = self._send_helper(disable_notification, None, None)
-        if isinstance(from_chat, message.Message):
+        if hasattr(from_chat, 'id'):
             from_chat_id = from_chat.id
         else:
             from_chat_id = str(from_chat)
@@ -481,11 +478,53 @@ class Chat(PAWTLazy):
     def send_sticker(self, sticker, disable_notification=None, reply_to=None,
                      reply_markup=None):
         info = self._send_helper(disable_notification, reply_to, reply_markup)
-        if isinstance(sticker, sticker_mod.Sticker):
-            sticker = sticker.file_id
+        if hasattr(sticker, 'file'):
+            sticker = sticker.file.id
         return self._file_post_helper(API_PATH['send_sticker'], info, sticker,
                                       'sticker')
 
 
 def make_labeled_price(label, amount):
     return dict(label=label, amount=amount)
+
+
+class MediaGroupBuilder:
+    def __init__(self):
+        self.result = []
+        self.files = {}
+        self._file_number = 0
+
+    def build_input_media(self, type_, media, caption=None, width=None,
+                          height=None, duration=None):
+        if isinstance(media, str):
+            media_formatted = media  # assuming it's a URL
+        elif hasattr(media, 'file'):
+            media_formatted = media.file
+        elif hasattr(media, 'id'):
+            media_formatted = media.id  # it's a known File
+        else:
+            # assuming it's a file on disk
+            name = 'file{}'.format(self._file_number)
+            media_formatted = 'attach://{}'.format(name)
+            self.files[name] = media
+            self._file_number += 1
+
+        data = dict(type=type_, media=media_formatted)
+        if caption:
+            data['caption'] = caption
+        if width:
+            data['width'] = width
+        if height:
+            data['height'] = height
+        if duration:
+            data['duration'] = duration
+
+        self.result.append(data)
+
+    def build_input_media_photo(self, media, caption=None):
+        self.build_input_media('photo', media, caption)
+
+    def build_input_media_video(self, media, caption=None, width=None,
+                                height=None,
+                                duration=None):
+        self.build_input_media('video', media, caption, width, height, duration)

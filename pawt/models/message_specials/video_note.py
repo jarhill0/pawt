@@ -1,6 +1,5 @@
 from .base import FileWrapper
 from ..base import Sendable
-from ...models import photo_size
 
 
 class VideoNote(FileWrapper, Sendable):
@@ -11,7 +10,7 @@ class VideoNote(FileWrapper, Sendable):
         self.duration = data['duration']
 
         if data.get('thumb'):
-            self.thumb = photo_size.PhotoSize(tg, data=data['thumb'])
+            self.thumb = tg.photo_size(data=data['thumb'])
         else:
             self.thumb = None
 

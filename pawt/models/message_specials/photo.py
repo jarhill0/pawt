@@ -1,12 +1,11 @@
 from ..base import Sendable
-from ...models import photo_size
 
 
 class Photo(Sendable):
     def __init__(self, tg, sizes):
         super().__init__(tg)
 
-        self.sizes = [photo_size.PhotoSize(tg, data=ps) for ps in sizes]
+        self.sizes = [tg.photo_size(data=ps) for ps in sizes]
 
     @property
     def min_size(self):

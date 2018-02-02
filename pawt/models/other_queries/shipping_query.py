@@ -3,7 +3,6 @@ from json import dumps
 from ..base import PAWTBase
 from ..message_specials import ShippingAddress
 from ...const import API_PATH
-from ...models import user
 
 
 class ShippingQuery(PAWTBase):
@@ -19,7 +18,7 @@ class ShippingQuery(PAWTBase):
         super().__init__(tg)
 
         self.id = data['id']
-        self.user = user.User(tg, data=data['from'])
+        self.user = tg.user(data=data['from'])
         self.from_ = self.user
         self.invoice_payload = data['invoice_payload']
         self.shipping_address = ShippingAddress(tg, data['shipping_address'])

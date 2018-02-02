@@ -1,8 +1,8 @@
-from .base import PAWTBase
-from .message_specials import FileWrapper
-from ..const import API_PATH
-from ..exceptions import BadArgument
-from ..models import file, user_profile_photos
+from .user_profile_photos import UserProfilePhotos
+from ..base import PAWTBase
+from ..message_specials import FileWrapper
+from ...const import API_PATH
+from ...exceptions import BadArgument
 
 
 class User(PAWTBase):
@@ -14,7 +14,7 @@ class User(PAWTBase):
             return '{} {}'.format(self.first_name, self.last_name)
         return self.first_name
 
-    def __init__(self, tg, data=None, user_id=None):
+    def __init__(self, tg, user_id=None, data=None):
         super(User, self).__init__(tg)
 
         if bool(user_id) == bool(data):
@@ -46,9 +46,10 @@ class User(PAWTBase):
         return hasattr(other, 'id') and str(self.id) == str(other.id)
 
     def add_sticker_to_set(self, name, png_sticker, emojis, mask_position=None):
-        if not isinstance(png_sticker, (str, file.File, FileWrapper)):
+        if not (isinstance(png_sticker, (str, FileWrapper) or hasattr(
+                png_sticker, 'id'))):
             png_sticker = self.upload_sticker_file(png_sticker)
-        if isinstance(png_sticker, file.File):
+        if hasattr(png_sticker, 'id'):
             png_sticker = png_sticker.id
         if isinstance(png_sticker, FileWrapper):
             png_sticker = png_sticker.file.id
@@ -90,9 +91,9 @@ class User(PAWTBase):
                                   'must be provided.')
             data['mask_position'] = mask_position.to_dict()
 
-        if not isinstance(png_sticker, (str, file.File)):
+        if not (isinstance(png_sticker, (str)) or hasattr(png_sticker, 'id')):
             png_sticker = self.upload_sticker_file(png_sticker)
-        if isinstance(png_sticker, file.File):
+        if hasattr(png_sticker, 'id'):
             png_sticker = png_sticker.id
         data['png_sticker'] = png_sticker
         return self._tg.get(API_PATH['create_new_sticker_set'], data=data)
@@ -107,7 +108,7 @@ class User(PAWTBase):
             data['limit'] = limit
         response = self._tg.get(API_PATH['get_user_profile_photos'],
                                 data=data)
-        return user_profile_photos.UserProfilePhotos(self._tg, response)
+        return UserProfilePhotos(self._tg, response)
 
     def upload_sticker_file(self, png_sticker):
         data = self._tg.get(API_PATH['upload_sticker_file'],

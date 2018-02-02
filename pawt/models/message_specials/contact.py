@@ -1,5 +1,4 @@
 from ..base import Sendable
-from ...models import user
 
 
 class Contact(Sendable):
@@ -10,8 +9,8 @@ class Contact(Sendable):
         self.last_name = data.get('last_name')
         self.user_id = data.get('user_id')
 
-    def to_lazy_user(self):
-        return user.User(self._tg, user_id=self.user_id)
+    def to_user(self):
+        return self._tg.user(user_id=self.user_id)
 
     def __repr__(self):
         return '<User {}>'.format(self.phone_number)

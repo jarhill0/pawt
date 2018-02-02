@@ -1,6 +1,3 @@
-from ..models import chat as chat_mod
-
-
 class PAWTBase:
     def __init__(self, tg):
         self._tg = tg
@@ -28,6 +25,6 @@ class Sendable(PAWTBase):
         raise NotImplementedError('Should be implemented by subclass')
 
     def _chat_parser(self, chat):
-        if not isinstance(chat, chat_mod.Chat):
-            chat = chat_mod.Chat(self._tg, chat_id=str(chat))
+        if isinstance(chat, (str, int)):
+            chat = self._tg.chat(chat)
         return chat

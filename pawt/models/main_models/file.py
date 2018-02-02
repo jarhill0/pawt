@@ -1,6 +1,6 @@
-from .base import PAWTLazy
-from ..const import API_PATH
-from ..exceptions import BadArgument
+from ..base import PAWTLazy
+from ...const import API_PATH
+from ...exceptions import BadArgument
 
 
 class File(PAWTLazy):
@@ -42,7 +42,7 @@ class File(PAWTLazy):
 
     def get_file(self):
         """Returns a new File instance with updated info."""
-        return File(self._tg, data=self._get_data())
+        return self._tg.file(data=self._get_data())
 
     def refresh(self):
         """Refreshes the attributes in place."""

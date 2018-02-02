@@ -1,5 +1,4 @@
 from .base import FileWrapper
-from ...models import photo_size
 
 
 class Animation(FileWrapper):
@@ -10,6 +9,6 @@ class Animation(FileWrapper):
         self.mime_type = data.get('mime_type')
 
         if data.get('thumb'):
-            self.thumb = photo_size.PhotoSize(tg, data['thumb'])
+            self.thumb = tg.photo_size(data=data['thumb'])
         else:
             self.thumb = None

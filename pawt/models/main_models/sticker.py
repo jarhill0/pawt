@@ -1,8 +1,7 @@
-from .base import Sendable
-from .message_specials import FileWrapper
-from ..const import API_PATH
-from ..models import mask_position, photo_size, sticker_set as ss_mod, \
-    user as user_mod
+from ..base import PAWTBase, Sendable
+from ..message_specials import FileWrapper
+from ...const import API_PATH
+from ...exceptions import BadArgument
 
 
 class Sticker(FileWrapper, Sendable):
@@ -16,18 +15,18 @@ class Sticker(FileWrapper, Sendable):
         self.set_name = data.get('set_name')
 
         if data.get('thumb'):
-            self.thumb = photo_size.PhotoSize(tg, data['thumb'])
+            self.thumb = tg.photo_size(data=data['thumb'])
         else:
             self.thumb = None
         if data.get('mask_position'):
-            self.mask_position = mask_position.MaskPosition(data['mask_pos'])
+            self.mask_position = MaskPosition(data['mask_pos'])
         else:
             self.mask_position = None
 
     def add_to_set(self, user, set_):
-        if not isinstance(user, user_mod.User):
-            user = user_mod.User(self._tg, user_id=user)
-        if isinstance(set_, ss_mod.StickerSet):
+        if isinstance(user, (int, str)):
+            user = self._tg.user(user_id=user)
+        if not isinstance(set_, (int, str)):
             name = set_.name
         else:
             name = str(set_)
@@ -49,3 +48,25 @@ class Sticker(FileWrapper, Sendable):
     def send(self, chat, *args, **kwargs):
         chat = self._chat_parser(chat)
         return chat.send_sticker(self, *args, **kwargs)
+
+
+class MaskPosition(PAWTBase):
+    def __init__(self, data):
+        super().__init__(tg=None)
+
+        # validate point
+
+        self.point = data['point']
+        self.x_shift = data['x_shift']
+        self.y_shift = data['y_shift']
+        self.scale = data['scale']
+
+        if self.point not in ("forehead", "eyes", "mouth", "chin"):
+            raise BadArgument('Point must be one of "forehead", "eyes", '
+                              '"mouth", or "chin".')
+
+    def to_dict(self):
+        return {'point': self.point,
+                'x_shift': self.x_shift,
+                'y_shift': self.y_shift,
+                'scale': self.scale}

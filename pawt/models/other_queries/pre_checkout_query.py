@@ -1,6 +1,5 @@
 from ..base import PAWTBase
 from ..message_specials import OrderInfo, format_currency
-from ..user import User
 from ...const import API_PATH
 
 
@@ -8,7 +7,7 @@ class PreCheckoutQuery(PAWTBase):
     def __init__(self, tg, data):
         super().__init__(tg)
         self.id = data['id']
-        self.user = User(self, data['from'])
+        self.user = tg.user(data=data['from'])
         self.from_ = self.user
         self.currency = data['currency']
         self.total_amount = data['total_amount']

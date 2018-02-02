@@ -1,5 +1,4 @@
 from ..base import PAWTBase
-from ...models import user
 
 
 class MessageEntity(PAWTBase):
@@ -79,7 +78,7 @@ class TextLink(MessageEntity):
 class TextMention(MessageEntity):
     def __init__(self, tg, data, text):
         super().__init__(tg, data, text)
-        self.user = user.User(tg, data=data['user'])
+        self.user = tg.user(data=data['user'])
 
 
 type_map = {'mention': Mention,

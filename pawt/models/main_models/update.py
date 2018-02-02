@@ -1,8 +1,8 @@
-from .base import PAWTBase
-from .inline_queries import InlineQuery
 from .message import Message
-from .other_queries import CallbackQuery, ChosenInlineResult, PreCheckoutQuery, \
-    ShippingQuery
+from ..base import PAWTBase
+from ..inline_queries import InlineQuery
+from ..other_queries import CallbackQuery, ChosenInlineResult, \
+    PreCheckoutQuery, ShippingQuery
 
 
 class Update(PAWTBase):

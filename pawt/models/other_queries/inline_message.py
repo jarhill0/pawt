@@ -3,7 +3,6 @@ from json import dumps
 from ..base import PAWTBase
 from ..message_specials import GameHighScore
 from ...const import API_PATH
-from ...models import user as user_mod
 
 
 class InlineMessage(PAWTBase):
@@ -52,7 +51,7 @@ class InlineMessage(PAWTBase):
         return self._tg.post(API_PATH['stop_message_live_location'], data=info)
 
     def get_game_high_scores(self, user):
-        if isinstance(user, user_mod.User):
+        if not isinstance(user, (str, int)):
             user_id = user.id
         else:
             user_id = str(user)
@@ -63,7 +62,7 @@ class InlineMessage(PAWTBase):
 
     def set_game_score(self, user, score, force=False,
                        disable_edit_message=False):
-        if isinstance(user, user_mod.User):
+        if not isinstance(user, (str, int)):
             user_id = user.id
         else:
             user_id = str(user)

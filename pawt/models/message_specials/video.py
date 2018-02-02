@@ -1,6 +1,5 @@
 from .base import FileWrapper
 from ..base import Sendable
-from ...models import photo_size
 
 
 class Video(FileWrapper, Sendable):
@@ -13,7 +12,7 @@ class Video(FileWrapper, Sendable):
         self.mime_type = data.get('mime_type')
 
         if data.get('thumb'):
-            self.thumb = photo_size.PhotoSize(tg, data=data['thumb'])
+            self.thumb = tg.photo_size(data=data['thumb'])
         else:
             self.thumb = None
 

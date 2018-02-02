@@ -1,7 +1,6 @@
-from .base import PAWTLazy
-from ..const import API_PATH
-from ..exceptions import BadArgument
-from ..models import chat as chat_mod, user as user_mod
+from ..base import PAWTLazy
+from ...const import API_PATH
+from ...exceptions import BadArgument
 
 
 class StickerSet(PAWTLazy):
@@ -36,13 +35,11 @@ class StickerSet(PAWTLazy):
 
     def add(self, user, png_sticker, emojis, mask_position=None):
         if isinstance(user, (int, str)):
-            user = user_mod.User(self._tg, user_id=user)
-        if not isinstance(user, user_mod.User):
-            raise ValueError('user must be a User, int, or str')
+            user = self._tg.user(user_id=user)
         return user.add_sticker_to_set(self.name, png_sticker, emojis,
                                        mask_position)
 
     def set_chat_sticker_set(self, chat):
-        if not isinstance(chat, chat_mod.Chat):
+        if not hasattr(chat, 'set_sticker_set'):
             chat = self._tg.chat(chat)
         return chat.set_sticker_set(self)

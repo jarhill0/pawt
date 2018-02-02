@@ -1,5 +1,4 @@
-from .base import PAWTBase
-from ..models import photo_size
+from ..base import PAWTBase
 
 
 class UserProfilePhotos(PAWTBase):
@@ -7,7 +6,7 @@ class UserProfilePhotos(PAWTBase):
         super().__init__(tg)
         self.total_count = data['total_count']
         self.photos = [
-            [photo_size.PhotoSize(self._tg, data=ps) for ps in photo]
+            [tg.photo_size(data=ps) for ps in photo]
             for photo in data['photos']
         ]
 

@@ -1,4 +1,4 @@
-from .message_specials.base import FileWrapper
+from ..message_specials.base import FileWrapper
 
 
 class PhotoSize(FileWrapper):

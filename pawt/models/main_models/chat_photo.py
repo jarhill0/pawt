@@ -1,4 +1,4 @@
-from .base import PAWTBase
+from ..base import PAWTBase
 
 
 class ChatPhoto(PAWTBase):

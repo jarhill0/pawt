@@ -1,12 +1,12 @@
 from json import dumps
 
-from .base import PAWTBase
-from .message_specials import Audio, Contact, Document, Game, GameHighScore, \
-    Invoice, Location, MessageEntity, Photo, SuccessfulPayment as SucPy, Venue, \
-    Video, VideoNote, Voice
-from ..const import API_PATH
-from ..exceptions import BadArgument, BadType
-from ..models import chat, photo_size, sticker as stick_mod, user as user_mod
+from ..base import PAWTBase
+from .sticker import Sticker
+from ..message_specials import Audio, Contact, Document, Game, GameHighScore, \
+    Invoice, Location, MessageEntity, Photo, SuccessfulPayment as SucPy, \
+    Venue, Video, VideoNote, Voice
+from ...const import API_PATH
+from ...exceptions import BadArgument, BadType
 
 
 class Message(PAWTBase):
@@ -15,7 +15,7 @@ class Message(PAWTBase):
 
         self.id = str(data['message_id'])
         self.date = data['date']
-        self.chat = chat.Chat(tg, data=data['chat'])
+        self.chat = tg.chat(data=data['chat'])
         self.edit_date = data.get('edit_date')
         self.media_group_id = data.get('media_group_id')
         self.author_signature = data.get('author_signature')
@@ -39,21 +39,20 @@ class Message(PAWTBase):
         self.successful_payment = None
 
         if data.get('from'):
-            self.user = user_mod.User(tg, data=data['from'])
+            self.user = tg.user(data=data['from'])
         if data.get('reply_to_message'):
             self.reply_to_message = Message(tg, data=data['reply_to_message'])
         if data.get('photo'):
             self.photo = Photo(tg, data['photo'])
         if data.get('sticker'):
-            self.sticker = stick_mod.Sticker(tg, data=data['sticker'])
+            self.sticker = Sticker(tg, data=data['sticker'])
         if data.get('new_chat_members'):
-            self.new_chat_members = [user_mod.User(tg, data=user_data)
+            self.new_chat_members = [tg.user(data=user_data)
                                      for user_data in data['new_chat_members']]
         if data.get('left_chat_member'):
-            self.left_chat_member = user_mod.User(tg,
-                                                  data=data['left_chat_member'])
+            self.left_chat_member = tg.user(data=data['left_chat_member'])
         if data.get('new_chat_photo'):
-            self.new_chat_photo = [photo_size.PhotoSize(tg, data=ps)
+            self.new_chat_photo = [tg.photo_size(data=ps)
                                    for ps in data['new_chat_photo']]
         if data.get('pinned_message'):
             self.pinned_message = Message(tg, data=data['pinned_message'])
@@ -88,14 +87,13 @@ class Message(PAWTBase):
 
         if data.get('forward_from'):
             # assume it's a forward
-            self.forward_from = user_mod.User(tg, data=data['forward_from'])
+            self.forward_from = tg.user(data=data['forward_from'])
             self.forward_date = data['forward_date']
         else:
             self.forward_from = self.forward_date = None
         if data.get('forward_from_chat'):
             # it's a forward from a channel
-            self.forward_from_chat = chat.Chat(tg,
-                                               data=data['forward_from_chat'])
+            self.forward_from_chat = tg.chat(data=data['forward_from_chat'])
             self.forward_from_message_id = data['forward_from_message_id']
             self.forward_signature = data['forward_signature']
         else:
@@ -189,12 +187,12 @@ class Message(PAWTBase):
         return self._replier
 
     def forward(self, to_chat, *args, **kwargs):
-        if not isinstance(to_chat, chat.Chat):
-            to_chat = chat.Chat(self._tg, chat_id=to_chat)
+        if isinstance(to_chat, (int, str)):
+            to_chat = self._tg.chat(chat_id=to_chat)
         return to_chat.forward_message(self.chat.id, self.id, *args, **kwargs)
 
     def get_game_high_scores(self, user):
-        if isinstance(user, user_mod.User):
+        if not isinstance(user, (str, int)):
             user_id = user.id
         else:
             user_id = str(user)
@@ -206,7 +204,7 @@ class Message(PAWTBase):
     def set_game_score(self, user, score, force=False,
                        disable_edit_message=False):
 
-        if isinstance(user, user_mod.User):
+        if not isinstance(user, (str, int)):
             user_id = user.id
         else:
             user_id = str(user)
@@ -284,7 +282,7 @@ class MessageReplier(PAWTBase):
                                    self.message_id, reply_markup)
 
     def __repr__(self):
-        return '<MessageReplier for {!r}>'.format(self.message)
+        return '<MessageReplier for {!r}>'.format(self._message)
 
     def send_audio(self, audio, caption=None, duration=None, performer=None,
                    title=None, disable_notification=None,

@@ -2,7 +2,8 @@ import requests
 
 from .const import API_PATH, BASE_PATH
 from .exceptions import APIException
-from .models import Chat, File, Sticker, StickerSet, Update, User
+from .models import Chat, File, Message, PhotoSize, Sticker, StickerSet, Update, \
+    User
 
 
 class Telegram:
@@ -29,14 +30,20 @@ class Telegram:
             session = requests.Session()
         self.session = session
 
-    def chat(self, chat_id):
-        return Chat(self, chat_id=chat_id)
+    def chat(self, chat_id=None, data=None):
+        return Chat(self, chat_id, data)
 
     def file(self, file_id=None, data=None):
         return File(self, file_id, data)
 
-    def user(self, user_id):
-        return User(self, data=None, user_id=user_id)
+    def user(self, user_id=None, data=None):
+        return User(self, user_id, data)
+
+    def message(self, data):
+        return Message(self, data)
+
+    def photo_size(self, data):
+        return PhotoSize(self, data)
 
     @staticmethod
     def _request_helper(response):
@@ -63,7 +70,7 @@ class Telegram:
 
     def get_me(self):
         u = self.get(API_PATH['get_me'])
-        return User(self, u)
+        return self.user(data=u)
 
     def get_updates(self, offset=None, limit=None, timeout=None,
                     allowed_updates=None):

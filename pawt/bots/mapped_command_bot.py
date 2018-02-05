@@ -12,10 +12,12 @@ class MappedCommandBot(CommandBot):
 
     def text_command_handler(self, message, command_lowered,
                              all_text_after_command):
-        handler = self.text_command_map[command_lowered]
-        handler(message, all_text_after_command)
+        handler = self.text_command_map.get(command_lowered)
+        if handler:
+            handler(message, all_text_after_command)
 
     def caption_command_handler(self, message, command_lowered,
                                 all_text_after_command):
-        handler = self.caption_command_map[command_lowered]
-        handler(message, all_text_after_command)
+        handler = self.caption_command_map.get(command_lowered)
+        if handler:
+            handler(message, all_text_after_command)

@@ -28,7 +28,9 @@ class MessageEntity(PAWTBase):
         return self.content
 
     def __eq__(self, other):
-        return str(self) == str(other)
+        return (str(self) == str(other) and hasattr(other, 'length') and
+                self.length == other.length and hasattr(other, 'offset') and
+                self.offset == other.offset)
 
 
 class Mention(MessageEntity):

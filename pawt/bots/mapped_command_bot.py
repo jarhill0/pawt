@@ -10,14 +10,12 @@ class MappedCommandBot(CommandBot):
         assert all(command.islower() for command in self.text_command_map)
         assert all(command.islower() for command in self.caption_command_map)
 
-    def text_command_handler(self, message, command_lowered,
-                             all_text_after_command):
+    def text_command_handler(self, message, command_lowered, command_params):
         handler = self.text_command_map.get(command_lowered)
         if handler:
-            handler(message, all_text_after_command)
+            handler(message, command_params)
 
-    def caption_command_handler(self, message, command_lowered,
-                                all_text_after_command):
+    def caption_command_handler(self, message, command_lowered, command_params):
         handler = self.caption_command_map.get(command_lowered)
         if handler:
-            handler(message, all_text_after_command)
+            handler(message, command_params)

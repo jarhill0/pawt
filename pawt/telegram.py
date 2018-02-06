@@ -30,6 +30,10 @@ class Telegram:
             session = requests.Session()
         self.session = session
 
+    def copy(self):
+        """Return a copy of the Telegram object with a new session."""
+        return Telegram(self.token, url=self.path)
+
     def chat(self, chat_id=None, data=None):
         return Chat(self, chat_id, data)
 
@@ -66,11 +70,6 @@ class Telegram:
     def post(self, path, data=None, files=None):
         # todo use get and post appropriately in entire package
         response = self.session.post(self.path + path, data=data, files=files)
-        return Telegram._request_helper(response)
-
-    def post_alt(self, path, session=None, data=None, files=None):
-        session = session or requests.Session()
-        response = session.post(self.path + path, data=data, files=files)
         return Telegram._request_helper(response)
 
     def get_me(self):

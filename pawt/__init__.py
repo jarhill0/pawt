@@ -7,4 +7,4 @@ from .models.reply_markup import InlineKeyboardMarkupBuilder, \
     ReplyKeyboardMarkupBuilder, force_reply, reply_keyboard_remove
 from .telegram import Telegram
 
-__version__ = '0.0.1a8'
+__version__ = '0.0.1a9'

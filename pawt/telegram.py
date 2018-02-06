@@ -68,6 +68,11 @@ class Telegram:
         response = self.session.post(self.path + path, data=data, files=files)
         return Telegram._request_helper(response)
 
+    def post_alt(self, path, session=None, data=None, files=None):
+        session = session or requests.Session()
+        response = session.post(self.path + path, data=data, files=files)
+        return Telegram._request_helper(response)
+
     def get_me(self):
         u = self.get(API_PATH['get_me'])
         return self.user(data=u)

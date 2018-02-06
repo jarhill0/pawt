@@ -12,6 +12,10 @@ class BadArgument(TelegramException, ValueError):
     pass
 
 
+class CaptionOrTextTooLong(BadArgument):
+    """Raised when a text field is too long. """
+
+
 class BadType(TelegramException, TypeError):
     """Raised when trying to perform an operation on an object that doesn't
     support it."""

@@ -56,3 +56,6 @@ API_PATH = {'get_updates': 'getUpdates',
             'send_game': 'sendGame',
             'set_game_score': 'setGameScore',
             'get_game_high_scores': 'getGameHighScores'}
+
+MAX_LENGTH = {'text': 4096,
+              'caption': 200}

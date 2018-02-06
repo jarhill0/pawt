@@ -4,8 +4,8 @@ from json import dumps
 from .chat_member import ChatMember
 from .chat_photo import ChatPhoto
 from ..base import PAWTLazy
-from ...const import API_PATH
-from ...exceptions import BadArgument
+from ...const import API_PATH, MAX_LENGTH
+from ...exceptions import BadArgument, CaptionOrTextTooLong
 from ...models.message_specials import Photo, Video
 
 
@@ -84,7 +84,7 @@ class Chat(PAWTLazy):
             self.photo = None
 
         if data.get('pinned_message'):
-            self.pinned_message = self._tg.message(data['pinned_message'])
+            self.pinned_message = self._tg.message(data=data['pinned_message'])
         else:
             self.pinned_message = None
 
@@ -190,6 +190,12 @@ class Chat(PAWTLazy):
 
     def _file_post_helper(self, api_path, data, possible_file,
                           file_param_name, files=None):
+        caption = data.get('caption')
+        if caption and len(caption) > MAX_LENGTH['caption']:
+            raise CaptionOrTextTooLong('Caption is too long '
+                                       '({} > {})'.format(len(caption),
+                                                          MAX_LENGTH[
+                                                              'caption']))
         if hasattr(possible_file, 'file'):
             possible_file = possible_file.file
         if hasattr(possible_file, 'id'):
@@ -218,6 +224,18 @@ class Chat(PAWTLazy):
         return data
 
     def _post_and_return_message(self, api_path, data, files=None):
+        text = data.get('text')
+        caption = data.get('caption')
+        if text and len(text) > MAX_LENGTH['text']:
+            raise CaptionOrTextTooLong('Text is too long '
+                                       '({} > {})'.format(len(text),
+                                                          MAX_LENGTH['text']))
+        if caption and len(caption) > MAX_LENGTH['caption']:
+            raise CaptionOrTextTooLong('Caption is too long '
+                                       '({} > {})'.format(len(caption),
+                                                          MAX_LENGTH[
+                                                              'caption']))
+
         response = self._tg.post(api_path, data=data, files=files)
         return self._tg.message(data=response)
 
@@ -332,6 +350,14 @@ class Chat(PAWTLazy):
             else:
                 raise BadArgument('Cannot handle thing of type {} as '
                                   'InputMedia.'.format(type(thing)))
+        for item in builder.result:
+            caption = item.get('caption')
+            if caption and len(caption) > MAX_LENGTH['caption']:
+                raise CaptionOrTextTooLong('Caption is too long '
+                                           '({} > {})'.format(len(caption),
+                                                              MAX_LENGTH[
+                                                                  'caption']))
+
         info['media'] = dumps(builder.result)  # weird, I know.
 
         response = self._tg.post(API_PATH['send_media_group'], data=info,

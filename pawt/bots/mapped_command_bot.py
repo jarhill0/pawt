@@ -12,10 +12,14 @@ class MappedCommandBot(CommandBot):
 
     def text_command_handler(self, message, command_lowered, command_params):
         handler = self.text_command_map.get(command_lowered)
-        if handler:
+        if handler and self.validate(message):
             handler(message, command_params)
 
     def caption_command_handler(self, message, command_lowered, command_params):
         handler = self.caption_command_map.get(command_lowered)
-        if handler:
+        if handler and self.validate(message):
             handler(message, command_params)
+
+    def validate(self, message):
+        """Override to perform validation on commands."""
+        return True

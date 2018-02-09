@@ -1,5 +1,3 @@
-import sys
-
 from ..telegram import Telegram
 
 CONTENT_TYPES = ('message', 'edited_message', 'channel_post',
@@ -14,9 +12,10 @@ class TelegramBotInterface:
     def __init__(self, token, *, url=None, session=None):
         self.tg = Telegram(token, url=url, session=session)
         self.update_offset = 0
+        self.go = True
 
     def run(self, timeout=60):
-        while True:
+        while self.go:
             try:
                 updates = self.tg.get_updates(self.update_offset, limit=100,
                                               timeout=timeout,
@@ -55,7 +54,7 @@ class TelegramBotInterface:
 
             except KeyboardInterrupt:
                 self.before_exit()
-                sys.exit(0)
+                self.go = False
 
     def message_handler(self, message):
         pass

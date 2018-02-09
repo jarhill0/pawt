@@ -45,6 +45,11 @@ class User(PAWTBase):
     def __eq__(self, other):
         return hasattr(other, 'id') and str(self.id) == str(other.id)
 
+    @property
+    def chat(self):
+        """Get a chat object out of the user"""
+        return self._tg.chat(self.id)
+
     def add_sticker_to_set(self, name, png_sticker, emojis, mask_position=None):
         if not (isinstance(png_sticker, (str, FileWrapper) or hasattr(
                 png_sticker, 'id'))):

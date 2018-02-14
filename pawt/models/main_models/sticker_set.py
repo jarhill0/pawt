@@ -18,7 +18,7 @@ class StickerSet(PAWTLazy):
             self._set_known_attrs(data)
 
     def _load(self):
-        d = self._tg.get(API_PATH['get_sticker_set'], data=dict(name=self.name))
+        d = self._tg.get(API_PATH['get_sticker_set'], params=dict(name=self.name))
         self._set_known_attrs(d)
 
     def _set_known_attrs(self, data):

@@ -56,7 +56,7 @@ class Telegram:
             Telegram._raise_exception(decoded)
         return decoded['result']
 
-    def get(self, path, data=None, files=None):
+    def get(self, path, params=None):
         """Make a request.
 
         :param path: The path to add on to the base path.
@@ -64,13 +64,12 @@ class Telegram:
         :param files: The files to send in the request. (default: None).
 
         """
-        response = self.session.get(self.path + path, data=data, files=files)
-        return Telegram._request_helper(response)
+        response = self.session.get(self.path + path, params=params)
+        return self._request_helper(response)
 
     def post(self, path, data=None, files=None):
-        # todo use get and post appropriately in entire package
         response = self.session.post(self.path + path, data=data, files=files)
-        return Telegram._request_helper(response)
+        return self._request_helper(response)
 
     def get_me(self):
         u = self.get(API_PATH['get_me'])
@@ -87,7 +86,7 @@ class Telegram:
             data['timeout'] = timeout
         if allowed_updates:
             data['allowed_updates'] = allowed_updates
-        response = self.get(API_PATH['get_updates'], data=data)
+        response = self.get(API_PATH['get_updates'], params=data)
         return [Update(self, ud) for ud in response]
 
     def sticker(self, data):

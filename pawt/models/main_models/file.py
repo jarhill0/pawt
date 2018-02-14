@@ -30,7 +30,7 @@ class File(PAWTLazy):
 
     def _get_data(self):
         return self._tg.get(API_PATH['get_file'],
-                            data=dict(file_id=self.id))
+                            params=dict(file_id=self.id))
 
     def _set_data(self, data):
         self.id = data['file_id']

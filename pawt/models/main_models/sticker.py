@@ -35,14 +35,14 @@ class Sticker(FileWrapper, Sendable):
 
     def delete(self):
         return self._tg.get(API_PATH['delete_sticker_from_set'],
-                            data={'sticker': self.file.id})
+                            params={'sticker': self.file.id})
 
     def get_set(self):
         return self._tg.sticker_set(self.set_name)
 
     def set_position(self, position):
         return self._tg.get(API_PATH['set_sticker_position_in_set'],
-                            data=dict(sticker=self.file.id,
+                            params=dict(sticker=self.file.id,
                                       position=position))
 
     def send(self, chat, *args, **kwargs):

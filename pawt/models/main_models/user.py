@@ -60,12 +60,12 @@ class User(PAWTBase):
         if isinstance(png_sticker, FileWrapper):
             png_sticker = png_sticker.file.id
 
-        return self._tg.get(API_PATH['add_sticker_to_set'],
-                            data=dict(user_id=self.id,
-                                      name=name,
-                                      png_sticker=png_sticker,
-                                      emojis=emojis,
-                                      mask_position=mask_position))
+        return self._tg.post(API_PATH['add_sticker_to_set'],
+                             data=dict(user_id=self.id,
+                                       name=name,
+                                       png_sticker=png_sticker,
+                                       emojis=emojis,
+                                       mask_position=mask_position))
 
     def create_new_sticker_set(self, name, title, png_sticker, emojis,
                                contains_masks=None, mask_position=None):
@@ -102,7 +102,7 @@ class User(PAWTBase):
         if hasattr(png_sticker, 'id'):
             png_sticker = png_sticker.id
         data['png_sticker'] = png_sticker
-        return self._tg.get(API_PATH['create_new_sticker_set'], data=data)
+        return self._tg.get(API_PATH['create_new_sticker_set'], params=data)
 
     def get_profile_photos(self, offset=None, limit=None):
         if (limit is not None) and (limit < 1 or limit > 100):
@@ -113,11 +113,11 @@ class User(PAWTBase):
         if limit:
             data['limit'] = limit
         response = self._tg.get(API_PATH['get_user_profile_photos'],
-                                data=data)
+                                params=data)
         return UserProfilePhotos(self._tg, response)
 
     def upload_sticker_file(self, png_sticker):
-        data = self._tg.get(API_PATH['upload_sticker_file'],
-                            files=dict(png_sticker=png_sticker),
-                            data=dict(user_id=self.id))
+        data = self._tg.post(API_PATH['upload_sticker_file'],
+                             files=dict(png_sticker=png_sticker),
+                             data=dict(user_id=self.id))
         return self._tg.file(data=data)

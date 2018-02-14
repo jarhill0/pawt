@@ -89,7 +89,7 @@ class Chat(PAWTLazy):
             self.pinned_message = None
 
     def _load(self):
-        data = self._tg.get(API_PATH['get_chat'], data=dict(chat_id=self.id))
+        data = self._tg.get(API_PATH['get_chat'], params=dict(chat_id=self.id))
         self._set_known_attrs(data)
 
     def get_chat(self):
@@ -98,7 +98,7 @@ class Chat(PAWTLazy):
 
     def export_invite_link(self):
         return self._tg.get(API_PATH['export_chat_invite_link'],
-                            data=dict(chat_id=self.id))
+                            params=dict(chat_id=self.id))
 
     def leave(self):
         return self._tg.post(API_PATH['leave_chat'], data=dict(chat_id=self.id))
@@ -106,12 +106,12 @@ class Chat(PAWTLazy):
     def get_member(self, user):
         user_id = self._coerce_userlike_obj(user)
         data = self._tg.get(API_PATH['get_chat_member'],
-                            data=dict(chat_id=self.id, user_id=user_id))
+                            params=dict(chat_id=self.id, user_id=user_id))
         return ChatMember(self._tg, data)
 
     def get_administrators(self):
         data = self._tg.get(API_PATH['get_chat_administrators'],
-                            data=dict(chat_id=self.id))
+                            params=dict(chat_id=self.id))
         return [ChatMember(self._tg, m) for m in data]
 
     def promote_member(self, user, **opts):
@@ -182,7 +182,7 @@ class Chat(PAWTLazy):
 
     def get_member_count(self):
         return self._tg.get(API_PATH['get_chat_members_count'],
-                            data=dict(chat_id=self.id))
+                            params=dict(chat_id=self.id))
 
     def unpin_message(self):
         return self._tg.post(API_PATH['unpin_chat_message'],

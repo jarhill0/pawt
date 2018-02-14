@@ -1,5 +1,7 @@
 # PAWT: a Python API Wrapper for Telegram
 
+## AKA Pre-Alpha Wrapper for Telegram
+
 
 ## About
 

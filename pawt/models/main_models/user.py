@@ -43,7 +43,8 @@ class User(PAWTBase):
         return self.full_name
 
     def __eq__(self, other):
-        return hasattr(other, 'id') and str(self.id) == str(other.id)
+        return ((hasattr(other, 'id') and str(self.id) == str(other.id)) or
+                str(self.id) == str(other))
 
     @property
     def chat(self):

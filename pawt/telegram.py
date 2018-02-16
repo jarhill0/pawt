@@ -9,7 +9,7 @@ from .models import Chat, File, Message, PhotoSize, Sticker, StickerSet, Update,
 class Telegram:
     """The Telegram class provides access to the Telegram API."""
 
-    def __init__(self, token, *, url=None, session=None):
+    def __init__(self, token, *, url=None, session=None, max_retries=3):
         """Create a Telegram instance.
 
         :param token: Telegram API token.
@@ -26,9 +26,9 @@ class Telegram:
         if not self.path.endswith('/'):
             self.path += '/'
 
-        if session is None:
-            session = requests.Session()
-        self.session = session
+        self.session = session or requests.Session()
+
+        self._max_retries = max_retries
 
     def copy(self):
         """Return a copy of the Telegram object with a new session."""
@@ -50,26 +50,40 @@ class Telegram:
         return PhotoSize(self, data)
 
     @staticmethod
-    def _request_helper(response):
+    def _request_decoder(response):
         decoded = response.json()
         if not decoded['ok']:
             Telegram._raise_exception(decoded)
         return decoded['result']
 
+    def _requestor(self, fn, *args, **kwargs):
+        retries = 0
+        while retries < self._max_retries:
+            try:
+                response = fn(*args, **kwargs)
+            except requests.exceptions.ConnectionError as ce:
+                retries += 1
+                error = ce
+            else:
+                return response
+        raise error
+
     def get(self, path, params=None):
         """Make a request.
 
         :param path: The path to add on to the base path.
-        :param data: The data to send in the request. (default: None).
-        :param files: The files to send in the request. (default: None).
+        :param params: The parameters to send in the request. (default: None).
 
         """
-        response = self.session.get(self.path + path, params=params)
-        return self._request_helper(response)
+        get = self.session.get
+        response = self._requestor(get, self.path + path, params=params)
+        return self._request_decoder(response)
 
     def post(self, path, data=None, files=None):
-        response = self.session.post(self.path + path, data=data, files=files)
-        return self._request_helper(response)
+        post = self.session.post
+        response = self._requestor(post, self.path + path, data=data,
+                                   files=files)
+        return self._request_decoder(response)
 
     def get_me(self):
         u = self.get(API_PATH['get_me'])

@@ -21,9 +21,38 @@ def test_eq():
     assert ps1 != same_size
     assert ps2 != same_size
 
+    different_size = PhotoSize(TG, dict(file_id=67890, width=640, height=1000))
+    assert different_size != ps1
+
 
 def test_gt():
     ps1 = PhotoSize(TG, DICT_1)
     bigger = PhotoSize(TG, dict(file_id=1, width=641, height=1000))
 
     assert bigger > ps1
+
+    try:
+        bigger > 3
+    except TypeError:
+        pass
+    else:
+        assert False, "These types are not comparable"
+
+    try:
+        bigger > '3'
+    except TypeError:
+        pass
+    else:
+        assert False, "These types are not comparable"
+
+    try:
+        bigger > Telegram
+    except TypeError:
+        pass
+    else:
+        assert False, "These types are not comparable"
+
+
+def test_repr():
+    ps = PhotoSize(TG, DICT_1)
+    assert repr(ps) == '<PhotoSize 12345>'

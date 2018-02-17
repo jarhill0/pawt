@@ -27,3 +27,8 @@ def test_mask_pos():
         pass
     else:
         assert False
+
+
+def test_repr():
+    sticker = Sticker(TG, data=dict(width=512, height=510, file_id=12345))
+    assert repr(sticker) == '<Sticker 12345>'

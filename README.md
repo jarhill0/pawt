@@ -2,6 +2,7 @@
 
 ## AKA Pre-Alpha Wrapper for Telegram
 
+[![Coverage Status](https://coveralls.io/repos/github/jarhill0/pawt/badge.svg?branch=master)](https://coveralls.io/github/jarhill0/pawt?branch=master)
 
 ## About
 

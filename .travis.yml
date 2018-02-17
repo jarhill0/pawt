@@ -1,0 +1,16 @@
+after_success: coveralls
+install:
+  - pip install coveralls
+  - python setup.py install
+language: python
+matrix:
+  allow_failures:
+    - python: nightly
+  fast_finish: true
+python:
+  - 3.4
+  - 3.5
+  - 3.6
+  - nightly
+script:
+- coverage run --source=pawt setup.py test

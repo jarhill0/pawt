@@ -1,6 +1,5 @@
 class TelegramException(Exception):
     """Base class for all exceptions in PAWT."""
-    pass
 
 
 class APIException(TelegramException):
@@ -9,7 +8,6 @@ class APIException(TelegramException):
 
 class BadArgument(TelegramException, ValueError):
     """Raised for values validated as bad prior to network requests."""
-    pass
 
 
 class CaptionOrTextTooLong(BadArgument):

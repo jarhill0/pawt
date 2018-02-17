@@ -9,6 +9,22 @@ from .models import Chat, File, Message, PhotoSize, Sticker, StickerSet, Update,
 class Telegram:
     """The Telegram class provides access to the Telegram API."""
 
+    @staticmethod
+    def _raise_exception(data):
+        if not data.get('parameters'):
+            raise APIException(data['description'] + ' ({})'.format(
+                data['error_code']))
+        raise APIException('{} ({})\n\n{!r}'.format(data['description'],
+                                                    data['error_code'],
+                                                    data['parameters']))
+
+    @staticmethod
+    def _request_decoder(response):
+        decoded = response.json()
+        if not decoded['ok']:
+            Telegram._raise_exception(decoded)
+        return decoded['result']
+
     def __init__(self, token, *, url=None, session=None, max_retries=3):
         """Create a Telegram instance.
 
@@ -30,32 +46,6 @@ class Telegram:
 
         self._max_retries = max_retries
 
-    def copy(self):
-        """Return a copy of the Telegram object with a new session."""
-        return Telegram(self.token, url=self._url)
-
-    def chat(self, chat_id=None, data=None):
-        return Chat(self, chat_id, data)
-
-    def file(self, file_id=None, data=None):
-        return File(self, file_id, data)
-
-    def user(self, user_id=None, data=None):
-        return User(self, user_id, data)
-
-    def message(self, data):
-        return Message(self, data)
-
-    def photo_size(self, data):
-        return PhotoSize(self, data)
-
-    @staticmethod
-    def _request_decoder(response):
-        decoded = response.json()
-        if not decoded['ok']:
-            Telegram._raise_exception(decoded)
-        return decoded['result']
-
     def _requestor(self, fn, *args, **kwargs):
         retries = 0
         while retries < self._max_retries:
@@ -68,6 +58,16 @@ class Telegram:
                 return response
         raise error
 
+    def chat(self, chat_id=None, data=None):
+        return Chat(self, chat_id, data)
+
+    def copy(self):
+        """Return a copy of the Telegram object with a new session."""
+        return Telegram(self.token, url=self._url)
+
+    def file(self, file_id=None, data=None):
+        return File(self, file_id, data)
+
     def get(self, path, params=None):
         """Make a request.
 
@@ -77,12 +77,6 @@ class Telegram:
         """
         get = self.session.get
         response = self._requestor(get, self.path + path, params=params)
-        return self._request_decoder(response)
-
-    def post(self, path, data=None, files=None):
-        post = self.session.post
-        response = self._requestor(post, self.path + path, data=data,
-                                   files=files)
         return self._request_decoder(response)
 
     def get_me(self):
@@ -103,17 +97,23 @@ class Telegram:
         response = self.get(API_PATH['get_updates'], params=data)
         return [Update(self, ud) for ud in response]
 
+    def message(self, data):
+        return Message(self, data)
+
+    def photo_size(self, data):
+        return PhotoSize(self, data)
+
+    def post(self, path, data=None, files=None):
+        post = self.session.post
+        response = self._requestor(post, self.path + path, data=data,
+                                   files=files)
+        return self._request_decoder(response)
+
     def sticker(self, data):
         return Sticker(self, data)
 
     def sticker_set(self, name):
         return StickerSet(self, name=name)
 
-    @staticmethod
-    def _raise_exception(data):
-        if not data.get('parameters'):
-            raise APIException(data['description'] + ' ({})'.format(
-                data['error_code']))
-        raise APIException('{} ({})\n\n{!r}'.format(data['description'],
-                                                    data['error_code'],
-                                                    data['parameters']))
+    def user(self, user_id=None, data=None):
+        return User(self, user_id, data)

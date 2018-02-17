@@ -47,7 +47,7 @@ class MyBot(TelegramBotInterface):
             # something we can't reply to
             pass
             
-bot = MyBot(token='YOUR TOKEN') # user your token
+bot = MyBot(token='YOUR TOKEN') # use your token
 bot.run()
 ```
 

@@ -24,6 +24,9 @@ def test_eq():
     different_size = PhotoSize(TG, dict(file_id=67890, width=640, height=1000))
     assert different_size != ps1
 
+    other_thing = {1, 2, 3}
+    assert other_thing != ps1
+
 
 def test_gt():
     ps1 = PhotoSize(TG, DICT_1)

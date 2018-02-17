@@ -55,8 +55,9 @@ class Chat(PAWTLazy):
         return self.title or str(self.id)
 
     def __eq__(self, other):
-        return ((hasattr(other, 'id') and str(self.id) == str(other.id)) or
-                str(self.id) == str(other))
+        if hasattr(other, 'id'):
+            return str(self.id) == str(other.id)
+        return str(self.id) == str(other)
 
     def _set_known_attrs(self, data):
         self.id = str(data['id'])

@@ -10,19 +10,10 @@ class Telegram:
     """The Telegram class provides access to the Telegram API."""
 
     @staticmethod
-    def _raise_exception(data):
-        if not data.get('parameters'):
-            raise APIException(data['description'] + ' ({})'.format(
-                data['error_code']))
-        raise APIException('{} ({})\n\n{!r}'.format(data['description'],
-                                                    data['error_code'],
-                                                    data['parameters']))
-
-    @staticmethod
     def _request_decoder(response):
         decoded = response.json()
         if not decoded['ok']:
-            Telegram._raise_exception(decoded)
+            raise APIException(decoded)
         return decoded['result']
 
     def __init__(self, token, *, url=None, session=None, max_retries=3):

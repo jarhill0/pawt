@@ -20,9 +20,9 @@ class Telegram:
         """
         self.token = token
 
-        url = url or BASE_PATH
+        self._url = url or BASE_PATH
 
-        self.path = url.format(token=token)
+        self.path = self._url.format(token=token)
         if not self.path.endswith('/'):
             self.path += '/'
 
@@ -32,7 +32,7 @@ class Telegram:
 
     def copy(self):
         """Return a copy of the Telegram object with a new session."""
-        return Telegram(self.token, url=self.path)
+        return Telegram(self.token, url=self._url)
 
     def chat(self, chat_id=None, data=None):
         return Chat(self, chat_id, data)

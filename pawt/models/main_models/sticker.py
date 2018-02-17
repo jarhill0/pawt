@@ -19,7 +19,7 @@ class Sticker(FileWrapper, Sendable):
         else:
             self.thumb = None
         if data.get('mask_position'):
-            self.mask_position = MaskPosition(data['mask_pos'])
+            self.mask_position = MaskPosition(data['mask_position'])
         else:
             self.mask_position = None
 
@@ -43,7 +43,7 @@ class Sticker(FileWrapper, Sendable):
     def set_position(self, position):
         return self._tg.get(API_PATH['set_sticker_position_in_set'],
                             params=dict(sticker=self.file.id,
-                                      position=position))
+                                        position=position))
 
     def send(self, chat, *args, **kwargs):
         chat = self._chat_parser(chat)

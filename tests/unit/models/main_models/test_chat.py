@@ -20,28 +20,28 @@ def test_num_args():
     try:
         Chat(DUMMY_TG)
     except BadArgument:
-        assert True
+        pass
     else:
         assert False
 
     try:
         Chat(DUMMY_TG, ID, DUMMY_DATA)
     except BadArgument:
-        assert True
+        pass
     else:
         assert False
 
     try:
         Chat(DUMMY_TG, ID, data=DUMMY_DATA)
     except BadArgument:
-        assert True
+        pass
     else:
         assert False
 
     try:
         Chat(DUMMY_TG, chat_id=ID, data=DUMMY_DATA)
     except BadArgument:
-        assert True
+        pass
     else:
         assert False
 

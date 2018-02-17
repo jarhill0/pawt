@@ -29,7 +29,7 @@ class Update(PAWTBase):
         self.chosen_inline_result = self.callback_query = None
         self.shipping_query = self.pre_checkout_query = None
 
-        # set the one and only peice of content to special vars for easier
+        # set the one and only piece of content to special vars for easier
         # accessibility.
         for content_type in Update.CONTENT_TYPES:
             if data.get(content_type):

@@ -73,12 +73,12 @@ class User(PAWTBase):
         if not all(l.isalnum() or l == '_' for l in name):
             raise BadArgument('Name can contain only english letters, digits '
                               'and underscores')
+        if len(name) < 1 or len(name) > 64:
+            raise BadArgument('Name must be 1-64 characters')
         if not name[0].isalpha():
             raise BadArgument('Name must begin with a letter')
         if '__' in name:
             raise BadArgument("Name can't contain consecutive underscores")
-        if len(name) < 1 or len(name) > 64:
-            raise BadArgument('Name must be 1-64 characters')
         if not name.endswith('_by_{}'.format(self._tg.get_me().username)):
             raise BadArgument('Name must end in "_by_<bot username>"')
 

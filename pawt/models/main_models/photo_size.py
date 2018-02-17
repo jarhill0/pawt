@@ -17,14 +17,16 @@ class PhotoSize(FileWrapper):
         return d
 
     def __eq__(self, other):
-        if not (hasattr(other, 'width') and hasattr(other, 'height')):
-            raise ValueError('Cannot compare PhotoSize with type {}'.format(
-                type(other)))
-        return self.width == other.width and self.height == other.height
+        if not (hasattr(other, 'width') and hasattr(other, 'height') and
+                    hasattr(other, 'file')):
+            return False
+
+        return (self.file == other.file and self.width == other.width and
+                self.height == other.height)
 
     def __gt__(self, other):
         if not (hasattr(other, 'width') and hasattr(other, 'height')):
-            raise ValueError('Cannot compare PhotoSize with type {}'.format(
+            raise TypeError('Cannot compare PhotoSize with type {}'.format(
                 type(other)))
 
         return self.height * self.width > other.height * other.width

@@ -25,6 +25,11 @@ class File(PAWTLazy):
         if data:
             self._set_data(data)
 
+    def __eq__(self, other):
+        if hasattr(other, 'id'):
+            return str(self.id) == str(other.id)
+        return str(self.id) == str(other)
+
     def __repr__(self):
         return '<File {}>'.format(self.id)
 

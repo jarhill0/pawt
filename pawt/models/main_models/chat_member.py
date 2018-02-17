@@ -21,4 +21,4 @@ class ChatMember(PAWTBase):
             setattr(self, attr_name, data.get(attr_name))
 
     def __repr__(self):
-        return '<ChatMember {id}>'.format(id=self.user)
+        return '<ChatMember {}>'.format(self.user.id)

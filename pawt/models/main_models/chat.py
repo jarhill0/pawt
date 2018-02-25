@@ -5,7 +5,7 @@ from .chat_member import ChatMember
 from .chat_photo import ChatPhoto
 from ..base import PAWTLazy
 from ...const import API_PATH, MAX_LENGTH
-from ...exceptions import BadArgument, CaptionOrTextTooLong
+from ...exceptions import BadArgument, TooLong
 from ...models.message_specials import Photo, Video
 
 
@@ -193,10 +193,9 @@ class Chat(PAWTLazy):
                           file_param_name, files=None):
         caption = data.get('caption')
         if caption and len(caption) > MAX_LENGTH['caption']:
-            raise CaptionOrTextTooLong('Caption is too long '
-                                       '({} > {})'.format(len(caption),
-                                                          MAX_LENGTH[
-                                                              'caption']))
+            msg = 'Caption is too long ({} > {})'.format(len(caption),
+                                                         MAX_LENGTH['caption'])
+            raise TooLong(self._tg, api_path, data, msg)
         if hasattr(possible_file, 'file'):
             possible_file = possible_file.file
         if hasattr(possible_file, 'id'):
@@ -228,14 +227,13 @@ class Chat(PAWTLazy):
         text = data.get('text')
         caption = data.get('caption')
         if text and len(text) > MAX_LENGTH['text']:
-            raise CaptionOrTextTooLong('Text is too long '
-                                       '({} > {})'.format(len(text),
-                                                          MAX_LENGTH['text']))
+            msg = 'Text is too long ({} > {})'.format(len(text),
+                                                      MAX_LENGTH['text'])
+            raise TooLong(self._tg, api_path, data, msg, files)
         if caption and len(caption) > MAX_LENGTH['caption']:
-            raise CaptionOrTextTooLong('Caption is too long '
-                                       '({} > {})'.format(len(caption),
-                                                          MAX_LENGTH[
-                                                              'caption']))
+            msg = 'Caption is too long ({} > {})'.format(len(caption),
+                                                         MAX_LENGTH['caption'])
+            raise TooLong(self._tg, api_path, data, msg, files)
 
         response = self._tg.post(api_path, data=data, files=files)
         return self._tg.message(data=response)
@@ -354,10 +352,10 @@ class Chat(PAWTLazy):
         for item in builder.result:
             caption = item.get('caption')
             if caption and len(caption) > MAX_LENGTH['caption']:
-                raise CaptionOrTextTooLong('Caption is too long '
-                                           '({} > {})'.format(len(caption),
-                                                              MAX_LENGTH[
-                                                                  'caption']))
+                msg = 'Caption is too long ({} > {})'.format(len(caption),
+                                                             MAX_LENGTH[
+                                                                 'caption'])
+                raise BadArgument(msg)
 
         info['media'] = dumps(builder.result)  # weird, I know.
 

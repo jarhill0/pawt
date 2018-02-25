@@ -51,7 +51,7 @@ class TooLong(BadArgument):
         total_len = -1  # -1 to account for one extra space
         for part in original:
             part_len = len(part)
-            if total_len + part_len > MAX_LENGTH[param_name]:
+            if total_len + part_len + 1 > MAX_LENGTH[param_name]:  # +1 = space
                 send()
                 this_chunk = []
                 total_len = -1

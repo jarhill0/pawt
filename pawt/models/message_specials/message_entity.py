@@ -30,7 +30,7 @@ class MessageEntity(PAWTBase):
     def __eq__(self, other):
         return (str(self) == str(other) and hasattr(other, 'length') and
                 self.length == other.length and hasattr(other, 'offset') and
-                self.offset == other.offset)
+                self.offset == other.offset and type(self) == type(other))
 
 
 class Mention(MessageEntity):

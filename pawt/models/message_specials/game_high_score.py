@@ -12,5 +12,5 @@ class GameHighScore(PAWTBase):
         return '<GameHighScore for {!r}>'.format(self.user)
 
     def __str__(self):
-        '#{}: {} got {} points'.format(self.position, str(self.user),
+        return '#{}: {} got {} points'.format(self.position, str(self.user),
                                        self.score)

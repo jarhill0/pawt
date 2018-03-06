@@ -13,7 +13,7 @@ class Contact(Sendable):
         return self._tg.user(user_id=self.user_id)
 
     def __repr__(self):
-        return '<User {}>'.format(self.phone_number)
+        return '<Contact {}>'.format(self.phone_number)
 
     def __str__(self):
         if self.last_name:

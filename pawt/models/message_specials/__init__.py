@@ -1,4 +1,5 @@
 from .audio import Audio
+from .animation import Animation
 from .base import FileWrapper
 from .contact import Contact
 from .document import Document

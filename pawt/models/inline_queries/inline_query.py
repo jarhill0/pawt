@@ -10,7 +10,7 @@ class InlineQuery(PAWTBase):
         self.user = tg.user(data=data['from'])
         self.from_ = self.user
         self.query = data['query']
-        self.offset = data['query']
+        self.offset = data['offset']
 
         if data.get('location'):
             self.location = Location(tg, data['location'])

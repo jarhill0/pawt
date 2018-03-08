@@ -16,7 +16,10 @@ class Photo(Sendable):
         return max(self.sizes)
 
     def __repr__(self) -> str:
-        return '<Photo with {} sizes>'.format(len(self.sizes))
+        return '<Photo ({} sizes)>'.format(len(self.sizes))
+
+    def __getitem__(self, ind):
+        return self.sizes[ind]
 
     def send(self, chat, *args, **kwargs):
         chat = self._chat_parser(chat)

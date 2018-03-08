@@ -5,7 +5,7 @@ def inline_keyboard_markup(inline_keyboard):
     return dict(inline_keyboard=inline_keyboard)
 
 
-def inline_keyboard_button(text, url=None, callback_data=None,
+def inline_keyboard_button(text, *, url=None, callback_data=None,
                            switch_inline_query=None,
                            switch_inline_query_current_chat=None,
                            callback_game=None, pay=None):

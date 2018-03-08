@@ -15,16 +15,16 @@ def inline_keyboard_button(text, *, url=None, callback_data=None,
         raise BadArgument('Exactly one parameter besides text should be '
                           'provided.')
     out = dict(text=text)
-    if url:
+    if url is not None:
         out['url'] = url
-    if callback_data:
+    if callback_data is not None:
         out['callback_data'] = callback_data
-    if switch_inline_query:
+    if switch_inline_query is not None:
         out['switch_inline_query'] = switch_inline_query
-    if switch_inline_query_current_chat:
+    if switch_inline_query_current_chat is not None:
         shorter_var_name = switch_inline_query_current_chat
         out['switch_inline_query_current_chat'] = shorter_var_name
-    if callback_game:
+    if callback_game is not None:
         out['callback_game'] = callback_game
     if pay is not None:  # can be False
         out['pay'] = pay

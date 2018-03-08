@@ -1,4 +1,4 @@
-def reply_keyboard_markup(keyboard, resize_keyboard=None,
+def reply_keyboard_markup(keyboard, *, resize_keyboard=None,
                           one_time_keyboard=None, selective=None):
     out = dict(keyboard=keyboard)
     if resize_keyboard is not None:  # could be False
@@ -10,7 +10,7 @@ def reply_keyboard_markup(keyboard, resize_keyboard=None,
     return out
 
 
-def keyboard_button(text, request_contact=None, request_location=None):
+def keyboard_button(text, *, request_contact=None, request_location=None):
     out = dict(text=text)
     if request_contact is not None:  # could be False
         out['request_contact'] = request_contact

@@ -18,6 +18,9 @@ class PreCheckoutQuery(PAWTBase):
         if data.get('order_info'):
             self.order_info = OrderInfo(tg, data=data['order_info'])
 
+    def __repr__(self):
+        return '<PreCheckoutQuery {}>'.format(self.id)
+
     def format_amount(self):
         return format_currency(self.currency, self.total_amount, self._tg)
 
@@ -27,3 +30,4 @@ class PreCheckoutQuery(PAWTBase):
             assert error_message, "if not ok, error_message is required"
             info['error_message'] = error_message
         return self._tg.post(API_PATH['answer_pre_checkout_query'], data=info)
+

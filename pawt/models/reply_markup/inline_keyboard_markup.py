@@ -40,15 +40,12 @@ def callback_game():
 class InlineKeyboardMarkupBuilder():
     def __init__(self):
         self.keyboard = [[]]
-        self._row_index = 0
 
     def add_button(self, *args, **kwargs):
-        self.keyboard[self._row_index].append(inline_keyboard_button(*args,
-                                                                     **kwargs))
+        self.keyboard[-1].append(inline_keyboard_button(*args, **kwargs))
 
     def new_row(self):
         self.keyboard.append([])
-        self._row_index += 1
 
     def build(self):
         return inline_keyboard_markup(self.keyboard)

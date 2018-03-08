@@ -16,4 +16,7 @@ class InlineQueryResultAudio(InlineQueryResult):
         self.caption = caption
         self.performer = performer
         self.audio_duration = audio_duration
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

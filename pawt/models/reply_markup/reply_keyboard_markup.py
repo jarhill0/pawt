@@ -1,3 +1,6 @@
+from pawt.exceptions import BadArgument
+
+
 def reply_keyboard_markup(keyboard, *, resize_keyboard=None,
                           one_time_keyboard=None, selective=None):
     out = dict(keyboard=keyboard)
@@ -12,9 +15,12 @@ def reply_keyboard_markup(keyboard, *, resize_keyboard=None,
 
 def keyboard_button(text, *, request_contact=None, request_location=None):
     out = dict(text=text)
-    if request_contact is not None:  # could be False
+    if request_contact and request_location:
+        raise BadArgument('At most one of request_contact and '
+                          'request_location may be provided.')
+    if request_contact:  # will only be True or None
         out['request_contact'] = request_contact
-    if request_location is not None:  # could be False
+    if request_location:  # will only be True or None
         out['request_contact'] = request_contact
     return out
 

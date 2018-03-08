@@ -9,10 +9,9 @@ def inline_keyboard_button(text, url=None, callback_data=None,
                            switch_inline_query=None,
                            switch_inline_query_current_chat=None,
                            callback_game=None, pay=None):
-    if (
-            url, callback_data, switch_inline_query,
-            switch_inline_query_current_chat, callback_game,
-            pay).count(None) != 5:
+    if (url, callback_data, switch_inline_query,
+        switch_inline_query_current_chat, callback_game,
+        pay).count(None) != 5:
         raise BadArgument('Exactly one parameter besides text should be '
                           'provided.')
     out = dict(text=text)

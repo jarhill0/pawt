@@ -22,15 +22,12 @@ def keyboard_button(text, request_contact=None, request_location=None):
 class ReplyKeyboardMarkupBuilder:
     def __init__(self):
         self.keyboard = [[]]
-        self._row_pointer = 0
 
     def add_button(self, *args, **kwargs):
-        self.keyboard[self._row_pointer].append(
-            keyboard_button(*args, **kwargs))
+        self.keyboard[-1].append(keyboard_button(*args, **kwargs))
 
     def new_row(self):
         self.keyboard.append([])
-        self._row_pointer += 1
 
     def build(self, *args, **kwargs):
         return reply_keyboard_markup(self.keyboard, *args, **kwargs)

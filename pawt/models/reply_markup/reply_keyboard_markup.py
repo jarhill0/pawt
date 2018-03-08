@@ -21,7 +21,7 @@ def keyboard_button(text, *, request_contact=None, request_location=None):
     if request_contact:  # will only be True or None
         out['request_contact'] = request_contact
     if request_location:  # will only be True or None
-        out['request_contact'] = request_contact
+        out['request_location'] = request_location
     return out
 
 

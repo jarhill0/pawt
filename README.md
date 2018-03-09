@@ -7,14 +7,7 @@
 ## About
 
 This code is pre-alpha. I believe I have full coverage of the Telegram API, 
-but no tests have been written and much of the package hasn't even been used 
-at all. 
-
-I'm going to first find obvious bugs either by integrating this package into my 
-Telegram bot [A Bot](https://github.com.jarhill0/ABot) or by building a new 
-bot with it and running. Once I've eliminated all the bugs that are obvious 
-to me, I'll begin writing tests, restructuring the package along the way to 
-make more logical sense. 
+but the code still needs to be restructured and improved. 
 
 ## Installation
 
@@ -53,6 +46,12 @@ bot.run()
 
 Bot classes have a `perform_extra_task()` method that can be overridden to do
 a specific task after processing each set of updates, or after timeout. 
+
+## Running tests
+
+```commandline
+python3 setup.py test
+```
 
 ## Warnings 
 

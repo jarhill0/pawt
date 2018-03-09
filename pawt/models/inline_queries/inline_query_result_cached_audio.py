@@ -13,4 +13,7 @@ class InlineQueryResultCachedAudio(InlineQueryResult):
 
         self.audio_file_id = audio_file_id
         self.caption = caption
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

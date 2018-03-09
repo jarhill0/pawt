@@ -24,4 +24,7 @@ class InlineQueryResultVideo(InlineQueryResult):
         self.video_height = video_height
         self.video_duration = video_duration
         self.description = description
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

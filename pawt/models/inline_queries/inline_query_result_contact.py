@@ -14,7 +14,10 @@ class InlineQueryResultContact(InlineQueryResult):
         self.phone_number = phone_number
         self.first_name = first_name
         self.last_name = last_name
-        self.input_message_content = input_message_content.to_dict()
         self.thumb_url = thumb_url
         self.thumb_width = thumb_width
         self.thumb_height = thumb_height
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

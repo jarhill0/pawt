@@ -16,4 +16,7 @@ class InlineQueryResultVoice(InlineQueryResult):
         self.title = title
         self.caption = caption
         self.voice_duration = voice_duration
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

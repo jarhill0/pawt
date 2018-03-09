@@ -19,7 +19,10 @@ class InlineQueryResultDocument(InlineQueryResult):
         self.mime_type = mime_type
         self.caption = caption
         self.description = description
-        self.input_message_content = input_message_content.to_dict()
         self.thumb_url = thumb_url
         self.thumb_width = thumb_width
         self.thumb_height = thumb_height
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

@@ -15,7 +15,10 @@ class InlineQueryResultLocation(InlineQueryResult):
         self.longitude = longitude
         self.title = title
         self.live_period = live_period
-        self.input_message_content = input_message_content.to_dict()
         self.thumb_url = thumb_url
         self.thumb_width = thumb_width
         self.thumb_height = thumb_height
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

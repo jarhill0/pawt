@@ -12,4 +12,7 @@ class InlineQueryResultCachedSticker(InlineQueryResult):
         super().__init__('sticker', id_, reply_markup)
 
         self.sticker_file_id = sticker_file_id
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

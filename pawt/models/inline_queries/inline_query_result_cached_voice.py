@@ -14,4 +14,7 @@ class InlineQueryResultCachedVoice(InlineQueryResult):
         self.voice_file_id = voice_file_id
         self.title = title
         self.caption = caption
-        self.input_message_content = input_message_content.to_dict()
+        self.input_message_content = None
+
+        if input_message_content:
+            self.input_message_content = input_message_content.to_dict()

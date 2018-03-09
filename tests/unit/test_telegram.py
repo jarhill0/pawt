@@ -8,6 +8,12 @@ def test_creation():
     tg = Telegram(DUMMY_TOKEN)
 
 
+def test_custom_url():
+    tg = Telegram(DUMMY_TOKEN, url='http://mysite.com/{token}')
+    assert tg.path == \
+           'http://mysite.com/542097629:AAGxYuGjLUWR7X1xf1x3kszU7DjRSCNE9VU/'
+
+
 def test_copy():
     tg = Telegram(DUMMY_TOKEN)
     copy = tg.copy()

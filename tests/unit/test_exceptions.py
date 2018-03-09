@@ -7,6 +7,6 @@ def test_api_exception():
     try:
         raise APIException(data)
     except APIException as e:
-        assert '400' in str(e)
+        assert '404' in str(e)
         assert 'That chat has moved' in str(e)
         assert e.response_parameters == {'migrate_to_chat_id': 1234}

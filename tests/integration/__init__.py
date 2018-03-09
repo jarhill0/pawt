@@ -1,0 +1,21 @@
+import os
+
+from betamax import Betamax
+from betamax_serializers.pretty_json import PrettyJSONSerializer
+from requests import Session
+
+from pawt import Telegram
+
+token = os.environ.get('PAWT_TEST_TOKEN') or 'TOKENPLACEHOLDER'
+user = os.environ.get('PAWT_TEST_USER') or 123
+
+with Betamax.configure() as config:
+    config.cassette_library_dir = os.path.join('tests', 'integration',
+                                               'cassettes')
+    config.define_cassette_placeholder('<TOKEN>', token)
+
+Betamax.register_serializer(PrettyJSONSerializer)
+
+session = Session()
+bm = Betamax(session, default_cassette_options={'serialize_with': 'prettyjson'})
+tg = Telegram(token, session=session)

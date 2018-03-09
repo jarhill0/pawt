@@ -14,6 +14,20 @@ def test_custom_url():
            'http://mysite.com/542097629:AAGxYuGjLUWR7X1xf1x3kszU7DjRSCNE9VU/'
 
 
+def test_message():
+    data = dict(message_id=12345, date=1234567890,
+                chat=dict(id=67890, type='private'))
+    message = Telegram('').message(data=data)
+    assert repr(message) == '<Message 12345>'
+
+
+def test_sticker():
+    sticker = Telegram('').sticker(data=dict(width=512, height=510,
+                                             file_id=12345))
+    assert sticker.width == 512
+    assert sticker.height == 510
+
+
 def test_copy():
     tg = Telegram(DUMMY_TOKEN)
     copy = tg.copy()

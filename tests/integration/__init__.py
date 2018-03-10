@@ -9,6 +9,7 @@ from pawt import Telegram
 token = os.environ.get('PAWT_TEST_TOKEN') or 'TOKENPLACEHOLDER'
 user = os.environ.get('PAWT_TEST_USER') or '123'
 game = os.environ.get('PAWT_TEST_GAME') or 'GAMEPLACEHOLDER'
+supergroup = os.environ.get('PAWT_TEST_SUPERGROUP') or 'SUPERGROUPPLACEHOLDER'
 
 with Betamax.configure() as config:
     config.cassette_library_dir = os.path.join('tests', 'integration',

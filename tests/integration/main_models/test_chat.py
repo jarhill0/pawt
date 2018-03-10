@@ -1,7 +1,9 @@
+import time
+
 from pawt.exceptions import APIException, BadArgument
 from pawt.models import make_labeled_price
 from pawt.models.reply_markup import force_reply
-from .. import bm, game, tg, user
+from .. import bm, game, supergroup, tg, user
 
 chat = tg.chat(user)
 
@@ -189,3 +191,58 @@ def test_forward_message():
         chat.forward_message(chat, message.id)
         new_message = message.forward(chat)
     assert new_message.id != message.id
+
+
+def get_png():
+    import os
+    here = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(here, 'gradient2.png')
+
+
+def test_supergroup():
+    group = tg.chat(supergroup)
+    with bm.use_cassette('test_chat__test_supergroup'):
+        group.get_chat()
+        if group.can_set_sticker_set:
+            group.set_sticker_set('LazyPanda')
+        link = group.export_invite_link()
+        assert link
+        for admin in group.get_administrators():
+            assert admin.user.id
+        message = group.send_message('gonna pin this')
+        group.pin_message(message)
+        group.unpin_message()
+        group.pin_message(message.id)
+        assert group.get_member_count()
+
+        group.get_chat()
+        if group.can_set_sticker_set:
+            group.delete_sticker_set()
+        group.set_title(group.title + 'a')
+        group.set_description((group.description or '') + 'd')
+        with open(get_png(), 'rb') as pic:
+            group.set_photo(pic)
+        group.delete_photo()
+
+        # getting a message from a user in this chat
+        for item in tg.get_updates(timeout=0):
+            if not item.message:
+                continue
+            if item.message.chat != supergroup:
+                continue
+            if not item.message.forward_from:
+                continue
+            if item.message.forward_from == user:
+                continue
+            author = item.message.forward_from
+
+        assert author, 'could not get user to test with'
+
+        group.promote_member(author, can_change_info=True)
+        group.restrict_member(author, can_add_web_page_previews=False,
+                              until_date=time.time() + 60)
+        assert author == group.get_member(author).user
+        group.kick_member(author)
+        group.unban_member(author)
+
+        group.leave()

@@ -78,7 +78,7 @@ class User(PAWTBase):
             data['contains_masks'] = True
             data['mask_position'] = mask_position.to_dict()
 
-        if not (isinstance(png_sticker, (str)) or hasattr(png_sticker, 'id')):
+        if not (isinstance(png_sticker, str) or hasattr(png_sticker, 'id')):
             png_sticker = self.upload_sticker_file(png_sticker)
         if hasattr(png_sticker, 'id'):
             png_sticker = png_sticker.id

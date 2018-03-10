@@ -4,7 +4,7 @@ from .chat_photo import ChatPhoto
 from .file import File
 from .message import Message
 from .photo_size import PhotoSize
-from .sticker import Sticker
+from .sticker import MaskPosition, Sticker
 from .sticker_set import StickerSet
 from .update import Update
 from .user import User

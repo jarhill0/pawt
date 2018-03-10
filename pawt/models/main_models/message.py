@@ -120,7 +120,7 @@ class Message(PAWTBase):
         data = dict(chat_id=self.chat.id, message_id=self.id)
         if disable_notification is not None:
             data['disable_notification'] = disable_notification
-        return self._tg.post(API_PATH['pin_chat_message'])
+        return self._tg.post(API_PATH['pin_chat_message'], data=data)
 
     def edit(self, new_text=None, parse_mode=None,
              disable_web_page_preview=None, reply_markup=None):

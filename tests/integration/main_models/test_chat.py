@@ -186,5 +186,6 @@ def test_send_invoice():
 def test_forward_message():
     with bm.use_cassette('test_chat__test_forward_message'):
         message = chat.send_message('Yo yo yo!')
+        chat.forward_message(chat, message.id)
         new_message = message.forward(chat)
     assert new_message.id != message.id

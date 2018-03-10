@@ -1,7 +1,7 @@
 {
   "http_interactions": [
     {
-      "recorded_at": "2018-03-10T07:29:13",
+      "recorded_at": "2018-03-10T07:36:26",
       "request": {
         "body": {
           "encoding": "utf-8",
@@ -21,7 +21,7 @@
       "response": {
         "body": {
           "encoding": null,
-          "string": "{\"ok\":true,\"result\":{\"message_id\":29,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520666953,\"text\":\"Yo yo yo!\"}}"
+          "string": "{\"ok\":true,\"result\":{\"message_id\":32,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520667386,\"text\":\"Yo yo yo!\"}}"
         },
         "headers": {
           "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -30,7 +30,7 @@
           "Connection": "keep-alive",
           "Content-Length": "260",
           "Content-Type": "application/json",
-          "Date": "Sat, 10 Mar 2018 07:29:13 GMT",
+          "Date": "Sat, 10 Mar 2018 07:36:26 GMT",
           "Server": "nginx/1.12.2",
           "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
         },
@@ -42,11 +42,11 @@
       }
     },
     {
-      "recorded_at": "2018-03-10T07:29:13",
+      "recorded_at": "2018-03-10T07:36:26",
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": "chat_id=<USER>&from_chat_id=<USER>&message_id=29"
+          "string": "chat_id=<USER>&from_chat_id=<USER>&message_id=32"
         },
         "headers": {
           "Accept": "*/*",
@@ -62,7 +62,7 @@
       "response": {
         "body": {
           "encoding": null,
-          "string": "{\"ok\":true,\"result\":{\"message_id\":30,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520666953,\"forward_from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"forward_date\":1520666953,\"text\":\"Yo yo yo!\"}}"
+          "string": "{\"ok\":true,\"result\":{\"message_id\":33,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520667386,\"forward_from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"forward_date\":1520667386,\"text\":\"Yo yo yo!\"}}"
         },
         "headers": {
           "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -71,7 +71,48 @@
           "Connection": "keep-alive",
           "Content-Length": "380",
           "Content-Type": "application/json",
-          "Date": "Sat, 10 Mar 2018 07:29:13 GMT",
+          "Date": "Sat, 10 Mar 2018 07:36:26 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      }
+    },
+    {
+      "recorded_at": "2018-03-10T07:36:27",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&from_chat_id=<USER>&message_id=32"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "54",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":34,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520667387,\"forward_from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"forward_date\":1520667386,\"text\":\"Yo yo yo!\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "380",
+          "Content-Type": "application/json",
+          "Date": "Sat, 10 Mar 2018 07:36:27 GMT",
           "Server": "nginx/1.12.2",
           "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
         },

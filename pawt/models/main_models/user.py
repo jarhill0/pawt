@@ -1,3 +1,5 @@
+from json import dumps
+
 from .user_profile_photos import UserProfilePhotos
 from ..base import PAWTBase
 from ..message_specials import FileWrapper
@@ -77,7 +79,7 @@ class User(PAWTBase):
         contains_masks = bool(mask_position)
         if contains_masks:
             data['contains_masks'] = True
-            data['mask_position'] = mask_position.to_dict()
+            data['mask_position'] = dumps(mask_position.to_dict())
 
         if not (isinstance(png_sticker, str) or hasattr(png_sticker, 'id')):
             png_sticker = self.upload_sticker_file(png_sticker)

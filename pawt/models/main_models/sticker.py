@@ -51,13 +51,23 @@ class Sticker(FileWrapper, Sendable):
 
 
 class MaskPosition(PAWTBase):
-    def __init__(self, data):
+    def __init__(self, data=None, point=None, x_shift=0, y_shift=0, scale=1):
         super().__init__(tg=None)
 
-        self.point = data['point']
-        self.x_shift = data['x_shift']
-        self.y_shift = data['y_shift']
-        self.scale = data['scale']
+        if bool(data) == any((point, x_shift, y_shift, scale)):
+            raise BadArgument('Either data or the other attributes must be '
+                              'provided')
+
+        if data:
+            point = data['point']
+            x_shift = data['x_shift']
+            y_shift = data['y_shift']
+            scale = data['scale']
+
+        self.point = point
+        self.x_shift = x_shift
+        self.y_shift = y_shift
+        self.scale = scale
 
         if self.point not in ("forehead", "eyes", "mouth", "chin"):
             raise BadArgument('Point must be one of "forehead", "eyes", '

@@ -69,22 +69,6 @@ class User(PAWTBase):
 
     def create_new_sticker_set(self, name, title, png_sticker, emojis,
                                contains_masks=None, mask_position=None):
-        # validate name to save a network request if it is bad
-        if not all(l.isalnum() or l == '_' for l in name):
-            raise BadArgument('Name can contain only english letters, digits '
-                              'and underscores')
-        if len(name) < 1 or len(name) > 64:
-            raise BadArgument('Name must be 1-64 characters')
-        if not name[0].isalpha():
-            raise BadArgument('Name must begin with a letter')
-        if '__' in name:
-            raise BadArgument("Name can't contain consecutive underscores")
-        if not name.endswith('_by_{}'.format(self._tg.get_me().username)):
-            raise BadArgument('Name must end in "_by_<bot username>"')
-
-        # validate title
-        if len(title) < 1 or len(title) > 64:
-            raise BadArgument('Title must be 1-64 characters')
 
         data = dict(user_id=self.id,
                     name=name,
@@ -92,9 +76,6 @@ class User(PAWTBase):
                     emojis=emojis)
         if contains_masks:
             data['contains_masks'] = True
-            if mask_position is None:
-                raise BadArgument('If contains_masks is truthy, mask_position '
-                                  'must be provided.')
             data['mask_position'] = mask_position.to_dict()
 
         if not (isinstance(png_sticker, (str)) or hasattr(png_sticker, 'id')):

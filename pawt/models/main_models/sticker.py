@@ -54,8 +54,6 @@ class MaskPosition(PAWTBase):
     def __init__(self, data):
         super().__init__(tg=None)
 
-        # validate point
-
         self.point = data['point']
         self.x_shift = data['x_shift']
         self.y_shift = data['y_shift']

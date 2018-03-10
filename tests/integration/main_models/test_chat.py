@@ -103,7 +103,7 @@ def test_send_venue():
     venue.location.longitude = -122.258008
     venue.title = 'The Campanile'
     venue.address = 'Sather Tower, Berkeley, CA 94720'
-    venue.foursquare_id = None
+    venue.foursquare_id = 'abcdefg'
 
     with bm.use_cassette('test_chat__test_send_venue'):
         chat.send_venue(venue)
@@ -188,4 +188,3 @@ def test_forward_message():
         message = chat.send_message('Yo yo yo!')
         new_message = message.forward(chat)
     assert new_message.id != message.id
-

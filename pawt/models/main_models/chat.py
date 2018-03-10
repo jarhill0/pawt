@@ -461,7 +461,7 @@ class Chat(PAWTLazy):
         info['provider_token'] = provider_token
         info['start_parameter'] = start_parameter
         info['currency'] = currency
-        info['prices'] = prices
+        info['prices'] = dumps(prices)
         if provider_data:
             info['provider_data'] = provider_data
         if photo_url:

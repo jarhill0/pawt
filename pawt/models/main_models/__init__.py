@@ -1,4 +1,4 @@
-from .chat import Chat
+from .chat import Chat, make_labeled_price
 from .chat_member import ChatMember
 from .chat_photo import ChatPhoto
 from .file import File

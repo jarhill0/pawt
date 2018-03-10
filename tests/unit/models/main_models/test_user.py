@@ -1,5 +1,4 @@
 from pawt import Telegram
-from pawt.exceptions import BadArgument
 from pawt.models import User
 
 
@@ -49,15 +48,3 @@ def test_eq():
 def test_chat():
     user = User(Telegram(''), 12345)
     assert user.chat == 12345
-
-
-def test_sticker_validation():
-    user = User(None, 12345)
-    for bad_name in ('The Name', '.', '', '123abc', 'apple__fruit',
-                     'long' * 17):
-        try:
-            user.create_new_sticker_set('The Name', bad_name, None, None)
-        except BadArgument:
-            pass
-        else:
-            assert False, 'Name {!r} was not rejected'.format(bad_name)

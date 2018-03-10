@@ -1,0 +1,44 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-10T07:26:29",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&title=Widget&description=It+is+great&payload=abc123&provider_token=123456789qwertyuiop&start_parameter=def456&currency=USD&prices=%5B%7B%22label%22%3A+%22Cheap%22%2C+%22amount%22%3A+100%7D%5D&provider_data=%7B%27price%27%3A0%7D&photo_url=https%3A%2F%2Fi.imgur.com%2F8ABRUYt.png&photo_size=14&photo_width=597&photo_height=300&need_name=False&need_phone_number=True&need_email=False&need_shipping_address=True&send_phone_number_to_provider=False&send_email_to_provider=True&is_flexible=False"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "507",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendInvoice"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":false,\"error_code\":400,\"description\":\"Bad Request: PAYMENT_PROVIDER_INVALID\"}"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "83",
+          "Content-Type": "application/json",
+          "Date": "Sat, 10 Mar 2018 07:26:29 GMT",
+          "Server": "nginx/1.12.2"
+        },
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendInvoice"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

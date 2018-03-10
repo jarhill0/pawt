@@ -1,0 +1,87 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-09T20:17:17",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&action=upload_photo"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "37",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendChatAction"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":true}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "25",
+          "Content-Type": "application/json",
+          "Date": "Fri, 09 Mar 2018 20:17:17 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendChatAction"
+      }
+    },
+    {
+      "recorded_at": "2018-03-09T20:17:17",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&caption=From+Wikimedia+commons%21&photo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fb%2Fbc%2FC-17_test_sortie.jpg%2F800px-C-17_test_sortie.jpg"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "183",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendPhoto"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":23,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520626637,\"photo\":[{\"file_id\":\"AgADBAADHJU9G8QZZAco3gwafFOpe1tuaRkABIsc2BxmpvsHInsCAAEC\",\"file_size\":906,\"width\":90,\"height\":64},{\"file_id\":\"AgADBAADHJU9G8QZZAco3gwafFOpe1tuaRkABAr0dzIwzKPtI3sCAAEC\",\"file_size\":13930,\"width\":320,\"height\":229},{\"file_id\":\"AgADBAADHJU9G8QZZAco3gwafFOpe1tuaRkABKC6KP3pG7jBJHsCAAEC\",\"file_size\":75814,\"width\":799,\"height\":571}],\"caption\":\"From Wikimedia commons!\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "625",
+          "Content-Type": "application/json",
+          "Date": "Fri, 09 Mar 2018 20:17:17 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendPhoto"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

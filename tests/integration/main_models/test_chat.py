@@ -213,6 +213,7 @@ def test_supergroup():
         group.pin_message(message)
         group.unpin_message()
         group.pin_message(message.id)
+        group.unpin_message()
         assert group.get_member_count()
 
         group.get_chat()

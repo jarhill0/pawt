@@ -54,7 +54,7 @@ class MaskPosition(PAWTBase):
     def __init__(self, data=None, point=None, x_shift=0, y_shift=0, scale=1):
         super().__init__(tg=None)
 
-        if bool(data) == any((point, x_shift, y_shift, scale)):
+        if bool(data) == any((point, x_shift, y_shift, scale != 1)):
             raise BadArgument('Either data or the other attributes must be '
                               'provided')
 

@@ -68,12 +68,13 @@ class User(PAWTBase):
                                        mask_position=mask_position))
 
     def create_new_sticker_set(self, name, title, png_sticker, emojis,
-                               contains_masks=None, mask_position=None):
+                               mask_position=None):
 
         data = dict(user_id=self.id,
                     name=name,
                     title=title,
                     emojis=emojis)
+        contains_masks = bool(mask_position)
         if contains_masks:
             data['contains_masks'] = True
             data['mask_position'] = mask_position.to_dict()

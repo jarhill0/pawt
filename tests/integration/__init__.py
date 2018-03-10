@@ -7,7 +7,7 @@ from requests import Session
 from pawt import Telegram
 
 token = os.environ.get('PAWT_TEST_TOKEN') or 'TOKENPLACEHOLDER'
-user = os.environ.get('PAWT_TEST_USER') or 123
+user = os.environ.get('PAWT_TEST_USER') or '123'
 game = os.environ.get('PAWT_TEST_GAME') or 'GAMEPLACEHOLDER'
 
 with Betamax.configure() as config:

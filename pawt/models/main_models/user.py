@@ -2,7 +2,6 @@ from json import dumps
 
 from .user_profile_photos import UserProfilePhotos
 from ..base import PAWTBase
-from ..message_specials import FileWrapper
 from ...const import API_PATH
 from ...exceptions import BadArgument
 
@@ -54,14 +53,8 @@ class User(PAWTBase):
         return self._tg.chat(self.id)
 
     def add_sticker_to_set(self, name, png_sticker, emojis, mask_position=None):
-        if not (isinstance(png_sticker, (str, FileWrapper) or hasattr(
-                png_sticker, 'id'))):
-            png_sticker = self.upload_sticker_file(png_sticker)
-        if hasattr(png_sticker, 'id'):
-            png_sticker = png_sticker.id
-        if isinstance(png_sticker, FileWrapper):
-            png_sticker = png_sticker.file.id
-
+        if not isinstance(png_sticker, str):
+            png_sticker = self.upload_sticker_file(png_sticker).id
         return self._tg.post(API_PATH['add_sticker_to_set'],
                              data=dict(user_id=self.id,
                                        name=name,

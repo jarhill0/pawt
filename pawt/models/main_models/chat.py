@@ -192,10 +192,6 @@ class Chat(PAWTLazy):
     def _file_post_helper(self, api_path, data, possible_file,
                           file_param_name, files=None):
         caption = data.get('caption')
-        if caption and len(caption) > MAX_LENGTH['caption']:
-            msg = 'Caption is too long ({} > {})'.format(len(caption),
-                                                         MAX_LENGTH['caption'])
-            raise TooLong(self._tg, api_path, data, msg)
         if hasattr(possible_file, 'file'):
             possible_file = possible_file.file
         if hasattr(possible_file, 'id'):
@@ -206,6 +202,12 @@ class Chat(PAWTLazy):
             if not files:
                 files = dict()
             files[file_param_name] = possible_file
+
+        if caption and len(caption) > MAX_LENGTH['caption']:
+            msg = 'Caption is too long ({} > {})'.format(len(caption),
+                                                         MAX_LENGTH['caption'])
+            raise TooLong(self._tg, api_path, data, msg)
+
         response = self._tg.post(api_path, data=data, files=files)
         return self._tg.message(data=response)
 

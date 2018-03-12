@@ -43,7 +43,7 @@ class File(PAWTLazy):
         self.file_path = data.get('file_path', None)
 
     def _load(self):
-        self.refresh()
+        self._set_data(self._get_data())
 
     def get_file(self):
         """Returns a new File instance with updated info."""
@@ -51,4 +51,4 @@ class File(PAWTLazy):
 
     def refresh(self):
         """Refreshes the attributes in place."""
-        self._set_data(self._get_data())
+        self._load()

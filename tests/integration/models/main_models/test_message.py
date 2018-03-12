@@ -1,6 +1,6 @@
 from pawt.exceptions import APIException, BadType
 from pawt.models.reply_markup import InlineKeyboardMarkupBuilder
-from ... import bm, tg, user
+from ... import bm, game, tg, user
 
 chat = tg.chat(user)
 
@@ -81,4 +81,25 @@ def test_delete():
 
 
 def test_replies():
-    pass  # todo
+    with bm.use_cassette('test_message__test_replies'):
+        parent = chat.send_message('Reply to this!')
+
+        assert repr(parent.reply) == '<MessageReplier for {}>'.format(
+            repr(parent))
+
+        # call reply
+        parent.reply('Ok!')
+        # explicitly send message
+        parent.reply.send_message('I did it!')
+
+        parent.reply.send_location(latitude=37.8720789, longitude=-122.258008)
+        parent.reply.send_photo(img)
+        parent.reply.send_game(game)
+        parent.reply.send_audio(
+            'http://www.billwurtz.com/la-de-da-de-da-de-da-de-day-oh.mp3')
+        parent.reply.send_video('https://i.imgur.com/LdE8jcw.mp4')
+        parent.reply.send_venue(latitude=37.8720789, longitude=-122.258008,
+                                title='The Campanile',
+                                address='Sather Tower, Berkeley, CA 94720')
+        parent.reply.send_contact(phone_number='+15555555555',
+                                  first_name='John')

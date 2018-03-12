@@ -243,7 +243,18 @@ def test_supergroup():
         group.restrict_member(author, can_add_web_page_previews=False,
                               until_date=time.time() + 60)
         assert author == group.get_member(author).user
-        group.kick_member(author, until_date = time.time()+70)
+        group.kick_member(author, until_date=time.time() + 70)
         group.unban_member(author)
 
         group.leave()
+
+
+def test_lazy():
+    # test the PAWTLazy base class
+    chat = tg.chat(user)
+    with bm.use_cassette('test_chat__test_lazy'):
+        try:
+            chat.nonexistant_attr
+            assert False, 'AttributeError should be raised'
+        except AttributeError:
+            pass

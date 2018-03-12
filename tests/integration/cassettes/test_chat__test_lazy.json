@@ -1,0 +1,44 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T21:07:45",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getChat?chat_id=<USER>"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\",\"photo\":{\"small_file_id\":\"AQADAQADqacxGyOknRMACPT15y8ABPWstCOCSkoljhACAAEC\",\"big_file_id\":\"AQADAQADqacxGyOknRMACPT15y8ABIlEVCTeM2YukBACAAEC\"}}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "254",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 21:07:45 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getChat?chat_id=<USER>"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

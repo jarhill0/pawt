@@ -1,0 +1,239 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T19:46:10",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getMe"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "99",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:00 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getMe"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:46:12",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/createNewStickerSet?user_id=<USER>&name=pawt_test_file_by_pawtbot&title=%27test_file__test_file%27&emojis=%F0%9F%98%80%F0%9F%98%83%F0%9F%98%87&png_sticker=https%3A%2F%2Fi.imgur.com%2FBDZfRJg.png"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":true}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "25",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:02 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/createNewStickerSet?user_id=<USER>&name=pawt_test_file_by_pawtbot&title=%27test_file__test_file%27&emojis=%F0%9F%98%80%F0%9F%98%83%F0%9F%98%87&png_sticker=https%3A%2F%2Fi.imgur.com%2FBDZfRJg.png"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:46:13",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getStickerSet?name=pawt_test_file_by_pawtbot"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"name\":\"pawt_test_file_by_pawtbot\",\"title\":\"'test_file__test_file'\",\"contains_masks\":false,\"stickers\":[{\"width\":512,\"height\":512,\"emoji\":\"\\ud83d\\ude00\",\"set_name\":\"pawt_test_file_by_pawtbot\",\"thumb\":{\"file_id\":\"AAQBABNLQAwwAARhATfWWBa8rigQAAIC\",\"file_size\":2856,\"width\":128,\"height\":128},\"file_id\":\"CAADAQADRQADI6SdE8ZrNfql8D6AAg\",\"file_size\":17014}]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "373",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:02 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getStickerSet?name=pawt_test_file_by_pawtbot"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:46:13",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"file_id\":\"CAADAQADRQADI6SdE8ZrNfql8D6AAg\",\"file_size\":17014,\"file_path\":\"stickers/file_2.webp\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "118",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:02 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:46:13",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"file_id\":\"CAADAQADRQADI6SdE8ZrNfql8D6AAg\",\"file_size\":17014,\"file_path\":\"stickers/file_2.webp\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "118",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:02 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:46:13",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"file_id\":\"CAADAQADRQADI6SdE8ZrNfql8D6AAg\",\"file_size\":17014,\"file_path\":\"stickers/file_2.webp\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "118",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:46:03 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getFile?file_id=CAADAQADRQADI6SdE8ZrNfql8D6AAg"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

@@ -10,8 +10,8 @@ def get_sticker():
 
 
 def test_sticker():
-    name = 'pawt_sticker_misc_testing_by_' + tg.get_me().username
     with bm.use_cassette('test_sticker__test_sticker'):
+        name = 'pawt_misc_sticker_testing_by_' + tg.get_me().username
         with open(get_sticker(), 'rb') as f:
             user.create_new_sticker_set(name, 'test_sticker.py', f, '🙃')
         user.add_sticker_to_set(name, 'https://i.imgur.com/BDZfRJg.png', '🍊')

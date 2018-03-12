@@ -24,7 +24,7 @@ def test_sticker():
 
         assert stickers_orig == stickers_new[1:] + stickers_new[:1]
 
-        assert user.chat.send_sticker(stickers_new[0])
+        assert stickers_new[0].send(user.id)
 
         stickers_new[0].delete()
         assert len(tg.sticker_set(name).stickers) == 1

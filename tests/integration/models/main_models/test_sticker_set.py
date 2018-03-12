@@ -20,7 +20,7 @@ def test_sticker_set():
 
         user.add_sticker_to_set(name, 'https://i.imgur.com/BDZfRJg.png', '🍊')
 
-    assert str(sticker_set) == 'test_sticker_set.py'
+        assert str(sticker_set) == 'test_sticker_set.py'
     assert repr(sticker_set).startswith(
         '<StickerSet pawt_test_sticker_set_by_')
 

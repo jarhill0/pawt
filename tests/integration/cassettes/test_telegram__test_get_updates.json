@@ -1,0 +1,83 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T18:38:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUpdates?limit=2&allowed_updates=message"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":[{\"update_id\":976005265,\n\"message\":{\"message_id\":80,\"from\":{\"id\":<USER>,\"is_bot\":false,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"language_code\":\"en-US\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520879443,\"text\":\"boops\"}},{\"update_id\":976005266,\n\"message\":{\"message_id\":87,\"from\":{\"id\":<USER>,\"is_bot\":false,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"language_code\":\"en-US\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520879736,\"text\":\"hi\"}}]}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "631",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 18:38:07 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUpdates?limit=2&allowed_updates=message"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T18:38:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUpdates?offset=976005267&timeout=5"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":[{\"update_id\":976005267,\n\"message\":{\"message_id\":88,\"from\":{\"id\":<USER>,\"is_bot\":false,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"language_code\":\"en-US\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520879737,\"text\":\"there\"}}]}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "328",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 18:38:08 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUpdates?offset=976005267&timeout=5"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

@@ -227,14 +227,9 @@ class Chat(PAWTLazy):
 
     def _post_and_return_message(self, api_path, data, files=None):
         text = data.get('text')
-        caption = data.get('caption')
         if text and len(text) > MAX_LENGTH['text']:
             msg = 'Text is too long ({} > {})'.format(len(text),
                                                       MAX_LENGTH['text'])
-            raise TooLong(self._tg, api_path, data, msg, files)
-        if caption and len(caption) > MAX_LENGTH['caption']:
-            msg = 'Caption is too long ({} > {})'.format(len(caption),
-                                                         MAX_LENGTH['caption'])
             raise TooLong(self._tg, api_path, data, msg, files)
 
         response = self._tg.post(api_path, data=data, files=files)

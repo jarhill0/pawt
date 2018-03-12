@@ -38,36 +38,45 @@ class TooLong(BadArgument):
         original = self._data[param_name].split(' ')
         if any(len(part) > MAX_LENGTH[param_name] for part in original):
             # we can't do it gracefully
-            self._dummy_mode()
-            return
+            return self._dummy_mode()
 
         # helper -- better than copy-paste!
         def send():
             message = ' '.join(this_chunk)
             self._data[param_name] = message
-            self._tg.post(self._path, data=self._data, files=self._files)
+            resp = self._tg.post(self._path, data=self._data, files=self._files)
+            return self._tg.message(resp)
+
+        sent_messages = []
 
         this_chunk = []
         total_len = -1  # -1 to account for one extra space
         for part in original:
             part_len = len(part)
             if total_len + part_len + 1 > MAX_LENGTH[param_name]:  # +1 = space
-                send()
+                sent_messages.append(send())
                 this_chunk = []
                 total_len = -1
             this_chunk.append(part)
             total_len += 1 + part_len  # the 1 for the space
-        send()
+        sent_messages.append(send())
+        return sent_messages
 
     def _dummy_mode(self):
         """Mangle the text in perfect chunks."""
         param_name = 'text' if self._data.get('text') else 'caption'
         text = self._data[param_name]
         size = MAX_LENGTH[param_name]
+
+        sent_messages = []
+
         for i in range(0, len(text), size):
             chunk = text[i:i + size]
             self._data[param_name] = chunk
-            self._tg.post(self._path, data=self._data, files=self._files)
+            resp = self._tg.post(self._path, data=self._data, files=self._files)
+            mess = self._tg.message(resp)
+            sent_messages.append(mess)
+        return sent_messages
 
 
 class BadType(TelegramException, TypeError):

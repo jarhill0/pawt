@@ -3,7 +3,7 @@ import time
 from pawt.exceptions import APIException, BadArgument
 from pawt.models import make_labeled_price
 from pawt.models.reply_markup import force_reply
-from .. import bm, game, supergroup, tg, user
+from ... import bm, game, supergroup, tg, user
 
 chat = tg.chat(user)
 

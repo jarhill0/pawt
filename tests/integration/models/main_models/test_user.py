@@ -1,5 +1,5 @@
 from pawt.models import MaskPosition
-from .. import bm, tg, user
+from ... import bm, tg, user
 
 user = tg.user(user)
 

@@ -30,12 +30,6 @@ class Chat(PAWTLazy):
             user = user.id
         return str(user)
 
-    @staticmethod
-    def _coerce_messagelike_obj(msg):
-        if hasattr(msg, 'id'):
-            msg = msg.id
-        return str(msg)
-
     def __init__(self, tg, chat_id=None, data=None):
         super().__init__(tg)
         if bool(chat_id) == bool(data):

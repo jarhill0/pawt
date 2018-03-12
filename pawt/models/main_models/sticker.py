@@ -34,9 +34,9 @@ class Sticker(FileWrapper, Sendable):
         return self._tg.sticker_set(self.set_name)
 
     def set_position(self, position):
-        return self._tg.get(API_PATH['set_sticker_position_in_set'],
-                            params=dict(sticker=self.file.id,
-                                        position=position))
+        return self._tg.post(API_PATH['set_sticker_position_in_set'],
+                             data={'sticker': self.file.id,
+                                   'position': position})
 
     def send(self, chat, *args, **kwargs):
         chat = self._chat_parser(chat)

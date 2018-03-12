@@ -210,7 +210,7 @@ def test_supergroup():
         for admin in group.get_administrators():
             assert admin.user.id
         message = group.send_message('gonna pin this')
-        group.pin_message(message)
+        group.pin_message(message, disable_notification=True)
         group.unpin_message()
         group.pin_message(message.id)
         group.unpin_message()
@@ -243,7 +243,7 @@ def test_supergroup():
         group.restrict_member(author, can_add_web_page_previews=False,
                               until_date=time.time() + 60)
         assert author == group.get_member(author).user
-        group.kick_member(author)
+        group.kick_member(author, until_date = time.time()+70)
         group.unban_member(author)
 
         group.leave()

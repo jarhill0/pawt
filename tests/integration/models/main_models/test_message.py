@@ -103,3 +103,9 @@ def test_replies():
                                 address='Sather Tower, Berkeley, CA 94720')
         parent.reply.send_contact(phone_number='+15555555555',
                                   first_name='John')
+
+
+def test_manual_reply():
+    with bm.use_cassette('test_message__test_manual_reply'):
+        mess = chat.send_message('Pls reply')
+        chat.send_message('ok', reply_to=mess)

@@ -1,0 +1,128 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T18:49:56",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&action=upload_photo"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "37",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendChatAction"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":true}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "25",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 18:49:56 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendChatAction"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T18:49:57",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&caption=Hi&photo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F10%2FTursiops_truncatus_01.jpg%2F800px-Tursiops_truncatus_01.jpg"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "170",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendPhoto"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":92,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520880597,\"photo\":[{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABGsunz2EMWJjxKkEAAEC\",\"file_size\":1420,\"width\":90,\"height\":59},{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABEyWtAHMZ2SSxakEAAEC\",\"file_size\":25554,\"width\":320,\"height\":211},{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABEvwQIkyhqzCxqkEAAEC\",\"file_size\":138808,\"width\":800,\"height\":528}],\"caption\":\"Hi\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "606",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 18:49:57 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendPhoto"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T18:49:57",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&message_id=92&caption=yo"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "42",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/editMessageCaption"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":92,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520880597,\"photo\":[{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABGsunz2EMWJjxKkEAAEC\",\"file_size\":1420,\"width\":90,\"height\":59},{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABEyWtAHMZ2SSxakEAAEC\",\"file_size\":25554,\"width\":320,\"height\":211},{\"file_id\":\"AgADBAADimc7G24ZZAeI4CohXzyxGaUd-hkABEvwQIkyhqzCxqkEAAEC\",\"file_size\":138808,\"width\":800,\"height\":528}],\"caption\":\"yo\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "606",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 18:49:57 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/editMessageCaption"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

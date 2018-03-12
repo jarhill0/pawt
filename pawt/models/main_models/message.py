@@ -169,7 +169,7 @@ class Message(PAWTBase):
 
         info = dict(chat_id=self.chat.id, message_id=self.id)
         if reply_markup:
-            info['reply_markup'] = reply_markup
+            info['reply_markup'] = dumps(reply_markup)
         resp = self._tg.post(API_PATH['stop_message_live_location'], data=info)
         if resp == True:  # explicitly checking for True, not just truthy value
             return resp

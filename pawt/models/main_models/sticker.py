@@ -23,16 +23,6 @@ class Sticker(FileWrapper, Sendable):
         else:
             self.mask_position = None
 
-    def add_to_set(self, user, set_):
-        if isinstance(user, (int, str)):
-            user = self._tg.user(user_id=user)
-        if not isinstance(set_, (int, str)):
-            name = set_.name
-        else:
-            name = str(set_)
-        return user.add_sticker_to_set(name, self, self.emoji,
-                                       self.mask_position)
-
     def delete(self):
         return self._tg.get(API_PATH['delete_sticker_from_set'],
                             params={'sticker': self.file.id})

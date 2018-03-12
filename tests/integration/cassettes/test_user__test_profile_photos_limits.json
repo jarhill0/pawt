@@ -1,0 +1,161 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T19:56:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=1"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"total_count\":1,\"photos\":[[{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPWstCOCSkoljhACAAEC\",\"file_size\":9931,\"width\":160,\"height\":160},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPMRp90LVKKijxACAAEC\",\"file_size\":27628,\"width\":320,\"height\":320},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABIlEVCTeM2YukBACAAEC\",\"file_size\":83833,\"width\":640,\"height\":640}]]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "392",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:56:08 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=1"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:56:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=1"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"total_count\":1,\"photos\":[[{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPWstCOCSkoljhACAAEC\",\"file_size\":9931,\"width\":160,\"height\":160},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPMRp90LVKKijxACAAEC\",\"file_size\":27628,\"width\":320,\"height\":320},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABIlEVCTeM2YukBACAAEC\",\"file_size\":83833,\"width\":640,\"height\":640}]]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "392",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:56:08 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=1"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:56:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=99"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"total_count\":1,\"photos\":[[{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPWstCOCSkoljhACAAEC\",\"file_size\":9931,\"width\":160,\"height\":160},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPMRp90LVKKijxACAAEC\",\"file_size\":27628,\"width\":320,\"height\":320},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABIlEVCTeM2YukBACAAEC\",\"file_size\":83833,\"width\":640,\"height\":640}]]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "392",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:56:08 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=99"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:56:08",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=100"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"total_count\":1,\"photos\":[[{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPWstCOCSkoljhACAAEC\",\"file_size\":9931,\"width\":160,\"height\":160},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABPMRp90LVKKijxACAAEC\",\"file_size\":27628,\"width\":320,\"height\":320},{\"file_id\":\"AgADAQADqacxGyOknRNMBe0drtPP7PT15y8ABIlEVCTeM2YukBACAAEC\",\"file_size\":83833,\"width\":640,\"height\":640}]]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "392",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:56:08 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=100"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

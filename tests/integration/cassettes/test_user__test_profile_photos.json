@@ -1,7 +1,7 @@
 {
   "http_interactions": [
     {
-      "recorded_at": "2018-03-10T19:46:27",
+      "recorded_at": "2018-03-12T19:56:09",
       "request": {
         "body": {
           "encoding": "utf-8",
@@ -28,7 +28,7 @@
           "Connection": "keep-alive",
           "Content-Length": "392",
           "Content-Type": "application/json",
-          "Date": "Sat, 10 Mar 2018 19:46:27 GMT",
+          "Date": "Mon, 12 Mar 2018 19:56:09 GMT",
           "Server": "nginx/1.12.2",
           "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
         },
@@ -37,6 +37,45 @@
           "message": "OK"
         },
         "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&limit=1"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T19:56:09",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&offset=1&limit=1"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"total_count\":1,\"photos\":[]}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "50",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 19:56:09 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUserProfilePhotos?user_id=<USER>&offset=1&limit=1"
       }
     }
   ],

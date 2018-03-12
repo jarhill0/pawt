@@ -1,3 +1,4 @@
+from pawt.exceptions import BadArgument
 from pawt.models import MaskPosition
 from ... import bm, tg, user
 
@@ -34,9 +35,27 @@ def test_sticker_set():
                                        emojis=emojis[2])
 
 
+def test_profile_photos_limits():
+    bad_cases = (-1, 0, 101)
+    good_cases = (1, 1, 99, 100)
+
+    for bad_case in bad_cases:
+        try:
+            user.get_profile_photos(limit=bad_case)
+            assert False, 'should raise BadArgument'
+        except BadArgument:
+            pass
+
+    with bm.use_cassette('test_user__test_profile_photos_limits'):
+        for good_case in good_cases:
+            assert user.get_profile_photos(limit=good_case)
+
+
 def test_profile_photos():
     with bm.use_cassette('test_user__test_profile_photos'):
         photos = user.get_profile_photos(0, 1)
+        user.get_profile_photos(1, 1)
     assert photos.total_count == 1
     for photo in photos:
         assert photo
+    assert '<PhotoSize' in str(photos)

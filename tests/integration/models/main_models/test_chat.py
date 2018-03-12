@@ -210,7 +210,7 @@ def test_supergroup():
         for admin in group.get_administrators():
             assert admin.user.id
         message = group.send_message('gonna pin this')
-        group.pin_message(message, disable_notification=True)
+        group.pin_message(message.id, disable_notification=True)
         group.unpin_message()
         group.pin_message(message.id)
         group.unpin_message()

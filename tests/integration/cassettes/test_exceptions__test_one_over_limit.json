@@ -1,0 +1,87 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-12T17:57:25",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&text=Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21+Hello+world%21"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "4747",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":45,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520877440,\"text\":\"Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world! Hello world!\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "4345",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 17:57:20 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      }
+    },
+    {
+      "recorded_at": "2018-03-12T17:57:26",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&text=He"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "25",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":46,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1520877440,\"text\":\"He\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "253",
+          "Content-Type": "application/json",
+          "Date": "Mon, 12 Mar 2018 17:57:20 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

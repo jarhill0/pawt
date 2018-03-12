@@ -18,7 +18,7 @@ def test_sticker_set():
 
         sticker_set = tg.sticker_set(name)
 
-        user.add_sticker_to_set(name, 'https://i.imgur.com/BDZfRJg.png', '🍊')
+        sticker_set.add(user.id, 'https://i.imgur.com/BDZfRJg.png', '🍊')
 
         assert str(sticker_set) == 'test_sticker_set.py'
     assert repr(sticker_set).startswith(

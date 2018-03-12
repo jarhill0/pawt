@@ -24,8 +24,6 @@ class Chat(PAWTLazy):
 
     @staticmethod
     def _coerce_userlike_obj(user):
-        if hasattr(user, 'user'):
-            user = user.user
         if hasattr(user, 'id'):
             user = user.id
         return str(user)

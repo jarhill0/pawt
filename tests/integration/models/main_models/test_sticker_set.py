@@ -12,7 +12,7 @@ def get_sticker():
 
 def test_sticker_set():
     with bm.use_cassette('test_sticker_set__test_sticker_set'):
-        name = 'pawt_test_sticker_set_by_' + tg.get_me().username
+        name = 'pawt_test_stickers_set_by_' + tg.get_me().username
         with open(get_sticker(), 'rb') as f:
             user.create_new_sticker_set(name, 'test_sticker_set.py', f, '🙃')
 
@@ -22,7 +22,7 @@ def test_sticker_set():
 
         assert str(sticker_set) == 'test_sticker_set.py'
     assert repr(sticker_set).startswith(
-        '<StickerSet pawt_test_sticker_set_by_')
+        '<StickerSet pawt_test_stickers_set_by_')
 
 
 def test_objectify_from_data():

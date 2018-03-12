@@ -17,8 +17,12 @@ class StickerSet(PAWTLazy):
         if data:
             self._set_known_attrs(data)
 
+    def __eq__(self, other):
+        return hasattr(other, 'name') and self.name == other.name
+
     def _load(self):
-        d = self._tg.get(API_PATH['get_sticker_set'], params=dict(name=self.name))
+        d = self._tg.get(API_PATH['get_sticker_set'],
+                         params=dict(name=self.name))
         self._set_known_attrs(d)
 
     def _set_known_attrs(self, data):

@@ -14,7 +14,11 @@ def test_sticker_set():
     emojis = '😀😃😇'
     mask_position = MaskPosition(point='mouth')
     title = 'Testing: the sticker set'
-    with bm.use_cassette('test_user__test_sticker_set'):
+
+    # query ordering differs because dicts pre-3.6 are not ordered, and this
+    # has caused issues. So, match only the path (this cassette only)
+    with bm.use_cassette('test_user__test_sticker_set',
+                         match_requests_on=['method', 'path']):
         name = 'pawt_test_set_by_{}'.format(tg.get_me().username)
         with open(get_sticker(), 'rb')as f:
             # will create a set of mask stickers

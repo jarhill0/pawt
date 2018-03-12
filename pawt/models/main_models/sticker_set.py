@@ -32,7 +32,7 @@ class StickerSet(PAWTLazy):
         self.stickers = [self._tg.sticker(data=o) for o in data['stickers']]
 
     def __repr__(self):
-        return self.name
+        return '<StickerSet {}>'.format(self.name)
 
     def __str__(self):
         return self.title

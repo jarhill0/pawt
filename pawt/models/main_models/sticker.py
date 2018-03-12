@@ -23,6 +23,9 @@ class Sticker(FileWrapper, Sendable):
         else:
             self.mask_position = None
 
+    def __eq__(self, other):
+        return hasattr(other, 'file') and self.file == other.file
+
     def delete(self):
         return self._tg.get(API_PATH['delete_sticker_from_set'],
                             params={'sticker': self.file.id})

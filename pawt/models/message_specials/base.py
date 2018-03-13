@@ -13,3 +13,6 @@ class FileWrapper(PAWTBase):
             class_name=self.__class__.__name__,
             file_id=self.file.id
         )
+
+    def __eq__(self, other):
+        return hasattr(other, 'file') and self.file == other.file

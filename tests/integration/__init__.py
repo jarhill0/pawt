@@ -8,6 +8,7 @@ from pawt import Telegram
 
 token = os.environ.get('PAWT_TEST_TOKEN') or 'TOKENPLACEHOLDER'
 user = os.environ.get('PAWT_TEST_USER') or '123'
+# game should have animation
 game = os.environ.get('PAWT_TEST_GAME') or 'GAMEPLACEHOLDER'
 supergroup = os.environ.get('PAWT_TEST_SUPERGROUP') or '-123'
 

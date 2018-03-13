@@ -1,7 +1,12 @@
 from pawt.models.message_specials import OrderInfo
 
 dummy_tg = None
-dummy_data = {'name': 'Cool Purchase', 'email': 'abc@xyz.com'}
+dummy_data = {'name': 'Cool Purchase', 'email': 'abc@xyz.com',
+              'shipping_address': {'country_code': 'USA',
+                                   'state': 'CA',
+                                   'city': 'San Francisco',
+                                   'street_line1': '1 Telegraph Hill Blvd',
+                                   'post_code': '94133'}}
 
 
 def test_attrs():

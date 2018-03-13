@@ -2,7 +2,9 @@ from pawt import Telegram
 from pawt.models.message_specials import Video
 
 dummy_tg = Telegram(token='')
-dummy_data = {'file_id': 'abc123', 'width': 400, 'height': 600, 'duration': 60}
+ps1 = dict(file_id=12345, width=640, height=999)
+dummy_data = {'file_id': 'abc123', 'width': 400, 'height': 600, 'duration': 60,
+              'thumb': ps1}
 
 
 def test_attrs():
@@ -12,6 +14,7 @@ def test_attrs():
     assert v.height == 600
     assert v.duration == 60
     assert repr(v) == '<Video abc123>'
+    assert str(v.thumb.file.id) == str(12345)
 
     for known_attr in ('file', 'width', 'height', 'duration', 'mime_type',
                        'thumb'):

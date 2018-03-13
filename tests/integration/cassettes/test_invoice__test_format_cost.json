@@ -1,0 +1,45 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-13T17:40:03",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://core.telegram.org/bots/payments/currencies.json"
+      },
+      "response": {
+        "body": {
+          "base64_string": "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",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-control": "no-store",
+          "Connection": "keep-alive",
+          "Content-Encoding": "gzip",
+          "Content-Length": "3249",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Tue, 13 Mar 2018 17:40:03 GMT",
+          "Pragma": "no-cache",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=15768000"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://core.telegram.org/bots/payments/currencies.json"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

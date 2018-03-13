@@ -148,7 +148,7 @@ def test_send_location():
 def get_mp4():
     import os
     here = os.path.abspath(os.path.dirname(__file__))
-    return os.path.join(here, 'video_note.mp4')
+    return os.path.join(here, 'video_with_sound.mp4')
 
 
 def test_send_video_note():
@@ -258,3 +258,53 @@ def test_lazy():
             assert False, 'AttributeError should be raised'
         except AttributeError:
             pass
+
+
+def test_send_media_group():
+    with bm.use_cassette('test_chat__test_send_media_group_1'):
+        photo_obj = chat.send_photo('https://upload.wikimedia.org/wikipedia/'
+                                    'commons/thumb/d/df/Common_frog_rana_'
+                                    'temporaria.jpg/800px-Common_frog_rana_'
+                                    'temporaria.jpg').photo
+        with open(get_mp4(), 'rb') as vid:
+            video_obj = chat.send_video(vid, caption='video caption').video
+
+    media = [
+        {'type': 'photo', 'media': 'https://upload.wikimedia.org/wikipedia/'
+                                   'commons/thumb/6/61/Frog_in_pond_0547.jpg'
+                                   '/640px-Frog_in_pond_0547.jpg',
+         'caption': 'This is a frog'},
+        photo_obj,
+        video_obj,
+        {'type': 'photo', 'media': 'https://upload.wikimedia.org/wikipedia/'
+                                   'commons/thumb/6/61/Frog_in_pond_0547.jpg'
+                                   '/640px-Frog_in_pond_0547.jpg',
+         'caption': 'frog' * 76},
+        3
+    ]
+
+    try:
+        chat.send_media_group(media)
+        assert False, 'should raise BadArgument'
+    except BadArgument as e:
+        assert 'type' in str(e)
+
+    del media[-1]
+
+    try:
+        chat.send_media_group(media)
+        assert False, 'should raise BadArgument'
+    except BadArgument as e:
+        assert 'long' in str(e).lower()
+
+    del media[-1]
+
+    with open(get_mp4(), 'rb') as vid:
+        local_vid = {'type': 'video', 'media': vid,
+                     'width': 400, 'height': 300, 'duration': 15}
+        media.append(local_vid)
+
+        with bm.use_cassette('test_chat__test_send_media_group_2'):
+            messages = chat.send_media_group(media)
+
+    assert len(messages) == len(media)

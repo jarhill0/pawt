@@ -1,7 +1,7 @@
 from json import dumps
 
-from ..base import PAWTBase
 from .sticker import Sticker
+from ..base import PAWTBase
 from ..message_specials import Audio, Contact, Document, Game, GameHighScore, \
     Invoice, Location, MessageEntity, Photo, SuccessfulPayment as SucPy, \
     Venue, Video, VideoNote, Voice
@@ -128,7 +128,7 @@ class Message(PAWTBase):
         data = dict(chat_id=self.chat.id, message_id=self.id)
         if reply_markup:
             data['reply_markup'] = dumps(reply_markup)  # yeah it's weird
-        if self.text and new_text:
+        if (self.text or self.game) and new_text:
             # we're editing a text message
             data['text'] = new_text
             if parse_mode:

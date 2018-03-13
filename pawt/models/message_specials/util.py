@@ -14,7 +14,7 @@ def format_currency(currency_name, total_amount, tg):
     # thousands operations
     thousands_parts_backwards = []
     while whole_int > 999:
-        thousands_parts_backwards.append(str(whole_int % 1000))
+        thousands_parts_backwards.append(str(whole_int % 1000).zfill(3))
         whole_int //= 1000
     thousands_parts_backwards.append(str(whole_int))
     sep = currency['thousands_sep']

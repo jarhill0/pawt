@@ -12,6 +12,14 @@ class Contact(Sendable):
     def to_user(self):
         return self._tg.user(user_id=self.user_id)
 
+    def __eq__(self, other):
+        for attr in ('phone_number', 'first_name', 'last_name'):
+            if not hasattr(other, attr):
+                return False
+        return (self.phone_number == other.phone_number
+                and self.first_name == other.first_name
+                and self.last_name == other.last_name)
+
     def __repr__(self):
         return '<Contact {}>'.format(self.phone_number)
 

@@ -40,3 +40,28 @@ def test_to_user():
     assert u == 123456789
     assert c.user_id == 123456789
     assert c != u
+
+
+def test_eq():
+    # different phone numbers
+    assert (Contact(None, {'phone_number': '123', 'first_name': 'Jack'})
+            != Contact(None, {'phone_number': '7', 'first_name': 'Jack'}))
+
+    # different first names
+    assert (Contact(None, {'phone_number': '123', 'first_name': 'Jack'})
+            != Contact(None, {'phone_number': '123', 'first_name': 'John'}))
+
+    # same num and first name
+    assert (Contact(None, {'phone_number': '123', 'first_name': 'Jack'})
+            == Contact(None, {'phone_number': '123', 'first_name': 'Jack'}))
+
+    # one missing last name
+    assert (Contact(None, {'phone_number': '123', 'first_name': 'Jack',
+                           'last_name': 'Jackson'})
+            != Contact(None, {'phone_number': '123', 'first_name': 'Jack'}))
+
+    # same num, first name, last name
+    assert (Contact(None, {'phone_number': '123', 'first_name': 'Jack',
+                           'last_name': 'Jackson'})
+            == Contact(None, {'phone_number': '123', 'first_name': 'Jack',
+                              'last_name': 'Jackson'}))

@@ -12,6 +12,8 @@ class Invoice(PAWTBase):
         self.currency = data['currency']
         self.total_amount = data['total_amount']
 
+        self._cached_cost = None
+
     def __repr__(self):
         return '<Invoice {}>'.format(self.title)
 
@@ -19,4 +21,8 @@ class Invoice(PAWTBase):
         return '{} ({})'.format(self.title, self.format_cost())
 
     def format_cost(self):
-        return format_currency(self.currency, self.total_amount, self._tg)
+        if not self._cached_cost:
+            self._cached_cost = format_currency(self.currency,
+                                                self.total_amount,
+                                                self._tg)
+        return self._cached_cost

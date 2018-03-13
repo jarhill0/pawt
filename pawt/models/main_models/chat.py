@@ -166,7 +166,7 @@ class Chat(PAWTLazy):
 
     def pin_message(self, msg, disable_notification=None):
         if hasattr(msg, 'pin'):
-            return msg.pin()
+            return msg.pin(disable_notification)
 
         data = dict(chat_id=self.id, message_id=str(msg))
         if disable_notification is not None:  # False is a possible val

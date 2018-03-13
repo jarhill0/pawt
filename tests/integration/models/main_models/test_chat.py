@@ -212,7 +212,7 @@ def test_supergroup():
         message = group.send_message('gonna pin this')
         group.pin_message(message.id, disable_notification=True)
         group.unpin_message()
-        group.pin_message(message.id)
+        group.pin_message(message, disable_notification=True)
         group.unpin_message()
         assert group.get_member_count()
 

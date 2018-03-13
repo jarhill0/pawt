@@ -105,3 +105,17 @@ def test_labeled_price():
     expected = {'label': 'USD',
                 'amount': 399}
     assert make_labeled_price('USD', 399) == expected
+
+
+def test_media_group_limits():
+    try:
+        Chat(DUMMY_TG, DUMMY_DATA).send_media_group([5])
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass
+
+    try:
+        Chat(DUMMY_TG, DUMMY_DATA).send_media_group([5] * 11)
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass

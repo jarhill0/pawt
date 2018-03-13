@@ -103,6 +103,58 @@ def test_replies():
                                 address='Sather Tower, Berkeley, CA 94720')
         parent.reply.send_contact(phone_number='+15555555555',
                                   first_name='John')
+        try:
+            parent.reply.send_invoice('Buy stuff', 'description', 'abc123',
+                                      'saldfkjasd;lfkja', 'def456', 'USD',
+                                      [{'label': 'Cheap', 'amount': 500}])
+        except APIException as e:
+            # I'm not registered for commerce on the platform
+            assert 'PAYMENT_PROVIDER_INVALID' in str(e)
+
+        media = [
+            {'type': 'photo', 'media': 'https://upload.wikimedia.org/wikipedia/'
+                                       'commons/thumb/6/61/Frog_in_pond_0547.jpg'
+                                       '/640px-Frog_in_pond_0547.jpg',
+             'caption': 'This is a frog'},
+            {'type': 'photo', 'media': 'https://upload.wikimedia.org/wikipedia/'
+                                       'commons/thumb/6/61/Frog_in_pond_0547.jpg'
+                                       '/640px-Frog_in_pond_0547.jpg',
+             'caption': 'This is not a frog'}]
+        parent.reply.send_media_group(media)
+
+        parent.reply.send_voice(
+            'https://upload.wikimedia.org/wikipedia/commons/4/47/'
+            'Beethoven_Moonlight_2nd_movement.ogg',
+            duration=125, caption='File:Beethoven Moonlight 2nd movement.ogg')
+
+        parent.reply.send_document(
+            'http://faculty.weber.edu/cbergeson/3060/denevi.pdf')
+
+        with open(get_mp4(), 'rb') as vn:
+            parent.reply.send_video_note(vn)
+
+
+def get_mp4():
+    import os
+    here = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(here, 'video_with_sound.mp4')
+
+
+def test_sticker_replies():
+    u = tg.user(user)
+    with bm.use_cassette('test_message__test_sticker_replies'):
+        name = 'pawt_sticker_replies_by_' + tg.get_me().username
+        u.create_new_sticker_set(name, 'test_message.py',
+                                 'https://i.imgur.com/BDZfRJg.png', '🍊')
+        sticker = tg.sticker_set(name).stickers[0]
+        parent = chat.send_message('Stick me!')
+        parent.reply.send_sticker(sticker)
+
+
+def get_sticker():
+    import os
+    here = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(here, 'gradient2.png')
 
 
 def test_manual_reply():

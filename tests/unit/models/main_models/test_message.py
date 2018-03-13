@@ -1,3 +1,4 @@
+from pawt.exceptions import BadArgument
 from pawt.models import Message
 from pawt.telegram import Telegram
 
@@ -25,3 +26,14 @@ def test_content():
     assert Message(TG, dummy_data).get_text_content() == 'My Caption'
     dummy_data['text'] = 'My Text'
     assert Message(TG, dummy_data).get_text_content() == 'My Text'
+
+
+def test_empty_edit():
+    dummy_data = DUMMY_DATA.copy()
+    dummy_data['text'] = 'My Text'
+    message = Message(TG, dummy_data)
+    try:
+        message.edit()
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass

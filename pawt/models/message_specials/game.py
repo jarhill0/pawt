@@ -11,12 +11,12 @@ class Game(PAWTBase):
         self.description = data['description']
         self.photo = [tg.photo_size(data=ps) for ps in data['photo']]
         self.text = data.get('text')
+        self.text_entities = []
 
         if data.get('text_entities'):
-            self.text_entities = MessageEntity.build(tg, data['text_entities'],
-                                                     self.text)
-        else:
-            self.text_entities = None
+            self.text_entities = [MessageEntity.build(tg, d, self.text) for d
+                                  in data['text_entities']]
+
         if data.get('animation'):
             self.animation = Animation(tg, data=data['animation'])
         else:

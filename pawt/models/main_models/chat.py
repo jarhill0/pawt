@@ -513,9 +513,7 @@ class MediaGroupBuilder:
         if isinstance(media, str):
             media_formatted = media  # assuming it's a URL
         elif hasattr(media, 'file'):
-            media_formatted = media.file
-        elif hasattr(media, 'id'):
-            media_formatted = media.id  # it's a known File
+            media_formatted = media.file.id
         else:
             # assuming it's a file on disk
             name = 'file{}'.format(self._file_number)

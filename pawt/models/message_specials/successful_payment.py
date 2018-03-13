@@ -14,6 +14,8 @@ class SuccessfulPayment(PAWTBase):
         self.telegram_payment_charge_id = data['telegram_payment_charge_id']
         self.provider_payment_charge_id = data['provider_payment_charge_id']
 
+        self._cached_cost = None
+
         if data.get('order_info'):
             self.order_info = OrderInfo(tg, data['order_info'])
         else:
@@ -23,4 +25,8 @@ class SuccessfulPayment(PAWTBase):
         return '<SuccessfulPayment {}>'.format(self.format_cost())
 
     def format_cost(self):
-        return format_currency(self.currency, self.total_amount, self._tg)
+        if not self._cached_cost:
+            self._cached_cost = format_currency(self.currency,
+                                                self.total_amount,
+                                                self._tg)
+        return self._cached_cost

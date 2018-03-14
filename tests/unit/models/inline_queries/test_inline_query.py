@@ -6,6 +6,7 @@ data = {'id': 'abc123', 'query': 'kittens', 'offset': 3,
         'from': {'id': 123456789,
                  'is_bot': False,
                  'first_name': 'Sally'}}
+location = {'latitude': 37.872059, 'longitude': -122.257812}
 
 
 def test_inline_query():
@@ -21,3 +22,7 @@ def test_inline_query():
 
     for known_attr in ('id', 'user', 'from_', 'query', 'offset', 'location'):
         assert hasattr(iq, known_attr)
+
+    data['location'] = location
+    iq = InlineQuery(dummy_tg, data)
+    assert iq.location.latitude == 37.872059

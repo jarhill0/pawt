@@ -1,3 +1,5 @@
+from json import dumps
+
 from ..base import PAWTBase
 from ..message_specials import Location
 from ...const import API_PATH
@@ -25,7 +27,7 @@ class InlineQuery(PAWTBase):
 
     def answer(self, results, cache_time=None, is_personal=None,
                next_offset=None, switch_pm_text=None, switch_pm_parameter=None):
-        results = [result.to_dict() for result in results]
+        results = dumps([result.to_dict() for result in results])
         info = dict(inline_query_id=self.id, results=results)
         if cache_time:
             info['cache_time'] = cache_time

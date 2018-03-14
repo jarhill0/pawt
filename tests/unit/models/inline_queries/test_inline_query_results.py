@@ -42,10 +42,12 @@ def test_article():
 
 def test_audio():
     data = {'audio_url': 'https://my.site/song.mp3', 'title': 'Hello world!',
-            'audio_duration': 300}
+            'audio_duration': 300,
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'audio'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultAudio('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultAudio abc123>' == repr(obj)
@@ -57,10 +59,12 @@ def test_audio():
 
 
 def test_cached_audio():
-    data = {'audio_file_id': 'def456', 'caption': 'Hello world!'}
+    data = {'audio_file_id': 'def456', 'caption': 'Hello world!',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'audio'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedAudio('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedAudio abc123>' == repr(obj)
@@ -72,10 +76,12 @@ def test_cached_audio():
 
 def test_cached_document():
     data = {'title': 'My PDF', 'document_file_id': 'def456',
-            'caption': 'Pls read'}
+            'caption': 'Pls read',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'document'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedDocument('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedDocument abc123>' == repr(obj)
@@ -87,10 +93,12 @@ def test_cached_document():
 
 
 def test_cached_gif():
-    data = {'gif_file_id': 'def456', 'caption': 'Pls loop'}
+    data = {'gif_file_id': 'def456', 'caption': 'Pls loop',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'gif'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedGif('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedGif abc123>' == repr(obj)
@@ -101,10 +109,12 @@ def test_cached_gif():
 
 
 def test_cached_mpeg4_gif():
-    data = {'mpeg4_file_id': 'def456', 'caption': 'Pls loop'}
+    data = {'mpeg4_file_id': 'def456', 'caption': 'Pls loop',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'mpeg4_gif'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedMpeg4Gif('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedMpeg4Gif abc123>' == repr(obj)
@@ -115,10 +125,12 @@ def test_cached_mpeg4_gif():
 
 
 def test_cached_photo():
-    data = {'photo_file_id': 'def456', 'caption': 'Pls loop'}
+    data = {'photo_file_id': 'def456', 'caption': 'Pls loop',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'photo'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedPhoto('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedPhoto abc123>' == repr(obj)
@@ -129,10 +141,12 @@ def test_cached_photo():
 
 
 def test_cached_sticker():
-    data = {'sticker_file_id': 'def456'}
+    data = {'sticker_file_id': 'def456',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'sticker'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedSticker('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedSticker abc123>' == repr(obj)
@@ -144,10 +158,12 @@ def test_cached_sticker():
 
 def test_cached_video():
     data = {'video_file_id': 'def456', 'title': 'My video',
-            'caption': 'Pls loop'}
+            'caption': 'Pls loop',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'video'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedVideo('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedVideo abc123>' == repr(obj)
@@ -159,10 +175,12 @@ def test_cached_video():
 
 def test_cached_voice():
     data = {'voice_file_id': 'def456', 'title': 'My voice',
-            'caption': 'Pls loop'}
+            'caption': 'Pls loop',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'voice'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultCachedVoice('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultCachedVoice abc123>' == repr(obj)
@@ -173,10 +191,12 @@ def test_cached_voice():
 
 
 def test_contact():
-    data = {'phone_number': '+15555555555', 'first_name': 'Jack'}
+    data = {'phone_number': '+15555555555', 'first_name': 'Jack',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'contact'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultContact('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultContact abc123>' == repr(obj)
@@ -189,10 +209,12 @@ def test_contact():
 
 def test_document():
     data = {'title': 'Cool Document', 'document_url':
-        'http://site.com/doc.pdf', 'mime_type': 'application/pdf'}
+        'http://site.com/doc.pdf', 'mime_type': 'application/pdf',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'document'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultDocument('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultDocument abc123>' == repr(obj)
@@ -219,10 +241,12 @@ def test_game():
 
 def test_gif():
     data = {'gif_url': 'http://site.com/img.gif',
-            'thumb_url': 'http://site.com/img.png'}
+            'thumb_url': 'http://site.com/img.png',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'gif'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultGif('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultGif abc123>' == repr(obj)
@@ -236,10 +260,12 @@ def test_gif():
 
 def test_location():
     data = {'latitude': 37.872059, 'longitude': -122.257812,
-            'title': 'On top of the world'}
+            'title': 'On top of the world',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'location'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultLocation('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultLocation abc123>' == repr(obj)
@@ -253,10 +279,12 @@ def test_location():
 
 def test_mpeg4_gif():
     data = {'mpeg4_url': 'http://site.com/img.gif',
-            'thumb_url': 'http://site.com/img.png'}
+            'thumb_url': 'http://site.com/img.png',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'mpeg4_gif'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultMpeg4Gif('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultMpeg4Gif abc123>' == repr(obj)
@@ -270,10 +298,12 @@ def test_mpeg4_gif():
 
 def test_photo():
     data = {'photo_url': 'http://site.com/img.jpg',
-            'thumb_url': 'http://site.com/img.png'}
+            'thumb_url': 'http://site.com/img.png',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'photo'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultPhoto('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultPhoto abc123>' == repr(obj)
@@ -287,10 +317,12 @@ def test_photo():
 
 def test_venue():
     data = {'latitude': 37.872059, 'longitude': -122.257812,
-            'title': 'Campanile', 'address': 'Sather Tower, Berkeley, CA 94720'}
+            'title': 'Campanile', 'address': 'Sather Tower, Berkeley, CA 94720',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'venue'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultVenue('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultVenue abc123>' == repr(obj)
@@ -304,10 +336,12 @@ def test_venue():
 
 def test_video():
     data = {'video_url': 'https://my.site/vid.mp4', 'mime_type': 'video/mp4',
-            'thumb_url': 'https://my.site/thumb.png', 'title': 'The best video'}
+            'thumb_url': 'https://my.site/thumb.png', 'title': 'The best video',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'video'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultVideo('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultVideo abc123>' == repr(obj)
@@ -320,10 +354,12 @@ def test_video():
 
 
 def test_voice():
-    data = {'voice_url': 'https://my.site/voice.ogg', 'title': 'The best voice'}
+    data = {'voice_url': 'https://my.site/voice.ogg', 'title': 'The best voice',
+            'input_message_content': INPUT_MESSAGE_CONTENT}
     expected = data.copy()
     expected['id'] = 'abc123'
     expected['type'] = 'voice'
+    expected['input_message_content'] = INPUT_MESSAGE_CONTENT.to_dict()
     obj = InlineQueryResultVoice('abc123', **data)
     assert expected == obj.to_dict()
     assert '<InlineQueryResultVoice abc123>' == repr(obj)

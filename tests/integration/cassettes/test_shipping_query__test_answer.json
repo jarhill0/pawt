@@ -1,0 +1,44 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-15T19:59:04",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "shipping_query_id=abc123&ok=True&shipping_options=%5B%7B%22id%22%3A+%22def456%22%2C+%22title%22%3A+%22The+main+option%22%2C+%22prices%22%3A+%5B%7B%22label%22%3A+%22Cheap%22%2C+%22amount%22%3A+100%7D%2C+%7B%22label%22%3A+%22Expensive%22%2C+%22amount%22%3A+10000%7D%5D%7D%5D"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "272",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/answerShippingQuery"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":false,\"error_code\":400,\"description\":\"Bad Request: QUERY_ID_INVALID\"}"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "75",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 19:59:04 GMT",
+          "Server": "nginx/1.12.2"
+        },
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/answerShippingQuery"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

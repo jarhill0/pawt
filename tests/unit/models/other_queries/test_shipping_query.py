@@ -1,4 +1,5 @@
 from pawt import Telegram
+from pawt.exceptions import BadArgument
 from pawt.models.other_queries import ShippingQuery
 
 data = {'id': 'abc123', 'invoice_payload': 'def456',
@@ -25,6 +26,34 @@ def test_attrs():
     for known_attr in ('id', 'user', 'from_', 'invoice_payload',
                        'shipping_address'):
         assert hasattr(sq, known_attr)
+
+
+def test_answer_validation():
+    sq = ShippingQuery(dummy_tg, data)
+
+    try:
+        sq.answer(True)
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass
+
+    try:
+        sq.answer(False)
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass
+
+    try:
+        sq.answer(True, [12], 'everything went right')
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass
+
+    try:
+        sq.answer(False, [9999], 'everything went wrong')
+        assert False, 'should raise BadArgument'
+    except BadArgument:
+        pass
 
 
 def test_make_labeled_price():

@@ -1,3 +1,4 @@
+from pawt.exceptions import BadArgument
 from ..base import PAWTBase
 from ..message_specials import OrderInfo, format_currency
 from ...const import API_PATH
@@ -25,9 +26,10 @@ class PreCheckoutQuery(PAWTBase):
         return format_currency(self.currency, self.total_amount, self._tg)
 
     def answer(self, ok, error_message=None):
+        if bool(ok) == bool(error_message):
+            raise BadArgument('error_message must be provided if and only if '
+                              'not ok')
         info = dict(pre_checkout_query_id=self.id, ok=ok)
         if not ok:
-            assert error_message, "if not ok, error_message is required"
             info['error_message'] = error_message
         return self._tg.post(API_PATH['answer_pre_checkout_query'], data=info)
-

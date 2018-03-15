@@ -29,7 +29,7 @@ class InlineQuery(PAWTBase):
                next_offset=None, switch_pm_text=None, switch_pm_parameter=None):
         results = dumps([result.to_dict() for result in results])
         info = dict(inline_query_id=self.id, results=results)
-        if cache_time:
+        if cache_time is not None:
             info['cache_time'] = cache_time
         if is_personal:
             info['is_personal'] = is_personal

@@ -1,0 +1,165 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-15T17:12:26",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getMe"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "99",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 17:12:26 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getMe"
+      }
+    },
+    {
+      "recorded_at": "2018-03-15T17:12:26",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&reply_markup=%7B%22inline_keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Press+me+for+url%22%2C+%22callback_data%22%3A+%221%22%7D%5D%5D%7D&text=Hello+there+for+url."
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "176",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":234,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1521133946,\"text\":\"Hello there for url.\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "272",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 17:12:26 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      }
+    },
+    {
+      "recorded_at": "2018-03-15T17:12:27",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "GET",
+        "uri": "https://api.telegram.org/bot<TOKEN>/getUpdates?offset=1&timeout=20&allowed_updates=callback_query"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":[{\"update_id\":976005305,\n\"callback_query\":{\"id\":\"1413466328884455975\",\"from\":{\"id\":<USER>,\"is_bot\":false,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"language_code\":\"en-US\"},\"message\":{\"message_id\":234,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1521133946,\"text\":\"Hello there for url.\"},\"chat_instance\":\"2580771704843396800\",\"data\":\"1\"}}]}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "525",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 17:12:27 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/getUpdates?offset=1&timeout=20&allowed_updates=callback_query"
+      }
+    },
+    {
+      "recorded_at": "2018-03-15T17:12:28",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "callback_query_id=1413466328884455975&url=https%3A%2F%2Ft.me%2Fpawtbot%3Fstart%3Dtest_answer_url&cache_time=1"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "109",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/answerCallbackQuery"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":true}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "25",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 17:12:27 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/answerCallbackQuery"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

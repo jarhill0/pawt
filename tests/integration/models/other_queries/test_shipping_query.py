@@ -28,3 +28,7 @@ def test_answer():
             sq.answer(True, [option])
         except APIException as e:  # not registered as merchant
             assert 'QUERY_ID_INVALID' in str(e)
+        try:
+            sq.answer(False, error_message="It didn't work!")
+        except APIException as e:  # not registered as merchant
+            assert 'QUERY_ID_INVALID' in str(e)

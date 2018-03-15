@@ -1,7 +1,7 @@
 {
   "http_interactions": [
     {
-      "recorded_at": "2018-03-15T19:48:16",
+      "recorded_at": "2018-03-15T20:06:12",
       "request": {
         "body": {
           "encoding": "utf-8",
@@ -29,7 +29,46 @@
           "Connection": "keep-alive",
           "Content-Length": "75",
           "Content-Type": "application/json",
-          "Date": "Thu, 15 Mar 2018 19:48:16 GMT",
+          "Date": "Thu, 15 Mar 2018 20:06:08 GMT",
+          "Server": "nginx/1.12.2"
+        },
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/answerPreCheckoutQuery"
+      }
+    },
+    {
+      "recorded_at": "2018-03-15T20:06:13",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "pre_checkout_query_id=abc123&ok=False&error_message=It+went+wrong%21"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "68",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/answerPreCheckoutQuery"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":false,\"error_code\":400,\"description\":\"Bad Request: QUERY_ID_INVALID\"}"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "75",
+          "Content-Type": "application/json",
+          "Date": "Thu, 15 Mar 2018 20:06:09 GMT",
           "Server": "nginx/1.12.2"
         },
         "status": {

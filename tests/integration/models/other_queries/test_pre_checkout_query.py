@@ -20,3 +20,9 @@ def test_answer():
         except APIException as e:
             # I don't actually have a registered commerce account
             assert 'QUERY_ID_INVALID' in str(e)
+
+        try:
+            pcq.answer(False, 'It went wrong!')
+        except APIException as e:
+            # I don't actually have a registered commerce account
+            assert 'QUERY_ID_INVALID' in str(e)

@@ -161,3 +161,10 @@ def test_manual_reply():
     with bm.use_cassette('test_message__test_manual_reply'):
         mess = chat.send_message('Pls reply')
         chat.send_message('ok', reply_to=mess)
+
+
+def test_forward():
+    with bm.use_cassette('test_message__test_forward'):
+        mess = chat.send_message('gonna forward')
+        assert mess.forward(user)
+        assert mess.forward(chat)

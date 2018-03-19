@@ -161,8 +161,6 @@ class Message(PAWTBase):
         if reply_markup:
             info['reply_markup'] = dumps(reply_markup)
         resp = self._tg.post(API_PATH['edit_message_live_location'], data=info)
-        if resp is True:  # explicitly checking for True, not just truthy value
-            return resp
         return Message(self._tg, data=resp)
 
     def stop_live_location(self, reply_markup=None):
@@ -171,8 +169,6 @@ class Message(PAWTBase):
         if reply_markup:
             info['reply_markup'] = dumps(reply_markup)
         resp = self._tg.post(API_PATH['stop_message_live_location'], data=info)
-        if resp is True:  # explicitly checking for True, not just truthy value
-            return resp
         return Message(self._tg, data=resp)
 
     def delete(self):

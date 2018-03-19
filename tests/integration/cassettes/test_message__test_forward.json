@@ -1,0 +1,128 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2018-03-19T17:49:17",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&text=gonna+forward"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "36",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":235,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1521481757,\"text\":\"gonna forward\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "265",
+          "Content-Type": "application/json",
+          "Date": "Mon, 19 Mar 2018 17:49:17 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/sendMessage"
+      }
+    },
+    {
+      "recorded_at": "2018-03-19T17:49:18",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&from_chat_id=<USER>&message_id=235"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "55",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":236,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1521481757,\"forward_from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"forward_date\":1521481757,\"text\":\"gonna forward\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "385",
+          "Content-Type": "application/json",
+          "Date": "Mon, 19 Mar 2018 17:49:17 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      }
+    },
+    {
+      "recorded_at": "2018-03-19T17:49:18",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "chat_id=<USER>&from_chat_id=<USER>&message_id=235"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "55",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "python-requests/2.18.4"
+        },
+        "method": "POST",
+        "uri": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      },
+      "response": {
+        "body": {
+          "encoding": null,
+          "string": "{\"ok\":true,\"result\":{\"message_id\":237,\"from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"chat\":{\"id\":<USER>,\"first_name\":\"Joey\",\"last_name\":\"R\",\"username\":\"jarhill0\",\"type\":\"private\"},\"date\":1521481758,\"forward_from\":{\"id\":524099473,\"is_bot\":true,\"first_name\":\"PAWT tester\",\"username\":\"pawtbot\"},\"forward_date\":1521481757,\"text\":\"gonna forward\"}}"
+        },
+        "headers": {
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+          "Connection": "keep-alive",
+          "Content-Length": "385",
+          "Content-Type": "application/json",
+          "Date": "Mon, 19 Mar 2018 17:49:18 GMT",
+          "Server": "nginx/1.12.2",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.telegram.org/bot<TOKEN>/forwardMessage"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

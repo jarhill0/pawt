@@ -41,6 +41,10 @@ class Hashtag(MessageEntity):
     pass
 
 
+class Cashtag(MessageEntity):
+    pass
+
+
 class BotCommand(MessageEntity):
     @property
     def command(self):
@@ -52,6 +56,10 @@ class Url(MessageEntity):
 
 
 class Email(MessageEntity):
+    pass
+
+
+class PhoneNumber(MessageEntity):
     pass
 
 
@@ -85,9 +93,11 @@ class TextMention(MessageEntity):
 
 type_map = {'mention': Mention,
             'hashtag': Hashtag,
+            'cashtag': Cashtag,
             'bot_command': BotCommand,
             'url': Url,
             'email': Email,
+            'phone_number': PhoneNumber,
             'bold': Bold,
             'italic': Italic,
             'code': Code,

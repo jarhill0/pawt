@@ -1,9 +1,16 @@
 from ..telegram import Telegram
 
-CONTENT_TYPES = ('message', 'edited_message', 'channel_post',
-                 'edited_channel_post', 'inline_query',
-                 'chosen_inline_result', 'callback_query',
-                 'shipping_query', 'pre_checkout_query')
+CONTENT_TYPES = (
+    "message",
+    "edited_message",
+    "channel_post",
+    "edited_channel_post",
+    "inline_query",
+    "chosen_inline_result",
+    "callback_query",
+    "shipping_query",
+    "pre_checkout_query",
+)
 
 
 class TelegramBotInterface:
@@ -17,9 +24,12 @@ class TelegramBotInterface:
     def run(self, timeout=60):
         while self.go:
             try:
-                updates = self.tg.get_updates(self.update_offset, limit=100,
-                                              timeout=timeout,
-                                              allowed_updates=CONTENT_TYPES)
+                updates = self.tg.get_updates(
+                    self.update_offset,
+                    limit=100,
+                    timeout=timeout,
+                    allowed_updates=CONTENT_TYPES,
+                )
 
                 if not updates:
                     self.perform_extra_task()
@@ -29,27 +39,26 @@ class TelegramBotInterface:
                 for update in updates:
                     try:
                         # it will only be one-- what a nice little elif chain!
-                        if update.content_type == 'message':
+                        if update.content_type == "message":
                             self.message_handler(update.message)
-                        elif update.content_type == 'edited_message':
+                        elif update.content_type == "edited_message":
                             self.edited_message_handler(update.edited_message)
-                        elif update.content_type == 'channel_post':
+                        elif update.content_type == "channel_post":
                             self.channel_post_handler(update.channel_post)
-                        elif update.content_type == 'edited_channel_post':
-                            self.edited_channel_post_handler(
-                                update.edited_channel_post)
-                        elif update.content_type == 'inline_query':
+                        elif update.content_type == "edited_channel_post":
+                            self.edited_channel_post_handler(update.edited_channel_post)
+                        elif update.content_type == "inline_query":
                             self.inline_query_handler(update.inline_query)
-                        elif update.content_type == 'chosen_inline_result':
+                        elif update.content_type == "chosen_inline_result":
                             self.chosen_inline_result_handler(
-                                update.chosen_inline_result)
-                        elif update.content_type == 'callback_query':
+                                update.chosen_inline_result
+                            )
+                        elif update.content_type == "callback_query":
                             self.callback_query_handler(update.callback_query)
-                        elif update.content_type == 'shipping_query':
+                        elif update.content_type == "shipping_query":
                             self.shipping_query_handler(update.shipping_query)
-                        elif update.content_type == 'pre_checkout_query':
-                            self.pre_checkout_query_handler(
-                                update.pre_checkout_query)
+                        elif update.content_type == "pre_checkout_query":
+                            self.pre_checkout_query_handler(update.pre_checkout_query)
                     except Exception as e:
                         if not self.exception_handled(e):
                             raise

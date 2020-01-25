@@ -7,9 +7,10 @@ class InlineQueryResultCachedSticker(InlineQueryResult):
     use input_message_content to send a message with the specified content
     instead of the sticker."""
 
-    def __init__(self, id_, sticker_file_id, reply_markup=None,
-                 input_message_content=None):
-        super().__init__('sticker', id_, reply_markup)
+    def __init__(
+        self, id_, sticker_file_id, reply_markup=None, input_message_content=None
+    ):
+        super().__init__("sticker", id_, reply_markup)
 
         self.sticker_file_id = sticker_file_id
         self.input_message_content = None

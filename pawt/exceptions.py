@@ -11,8 +11,8 @@ class APIException(TelegramException):
     """Class for all exceptions caused serverside."""
 
     def __init__(self, data):
-        message = '{}: {}'.format(data['error_code'], data['description'])
-        self.response_parameters = data.get('parameters')
+        message = "{}: {}".format(data["error_code"], data["description"])
+        self.response_parameters = data.get("parameters")
         super().__init__(message)
 
 
@@ -32,17 +32,17 @@ class TooLong(BadArgument):
 
     def send_chunked(self):
         """Method to automatically re-send a message in chunks."""
-        param_name = 'text' if self._data.get('text') else 'caption'
+        param_name = "text" if self._data.get("text") else "caption"
         # this method won't work on a long amount of text separated by
         # non-space whitespace.
-        original = self._data[param_name].split(' ')
+        original = self._data[param_name].split(" ")
         if any(len(part) > MAX_LENGTH[param_name] for part in original):
             # we can't do it gracefully
             return self._dummy_mode()
 
         # helper -- better than copy-paste!
         def send():
-            message = ' '.join(this_chunk)
+            message = " ".join(this_chunk)
             self._data[param_name] = message
             resp = self._tg.post(self._path, data=self._data, files=self._files)
             return self._tg.message(resp)
@@ -64,14 +64,14 @@ class TooLong(BadArgument):
 
     def _dummy_mode(self):
         """Mangle the text in perfect chunks."""
-        param_name = 'text' if self._data.get('text') else 'caption'
+        param_name = "text" if self._data.get("text") else "caption"
         text = self._data[param_name]
         size = MAX_LENGTH[param_name]
 
         sent_messages = []
 
         for i in range(0, len(text), size):
-            chunk = text[i:i + size]
+            chunk = text[i : i + size]
             self._data[param_name] = chunk
             resp = self._tg.post(self._path, data=self._data, files=self._files)
             mess = self._tg.message(resp)

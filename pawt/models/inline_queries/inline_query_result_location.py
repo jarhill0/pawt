@@ -6,10 +6,20 @@ class InlineQueryResultLocation(InlineQueryResult):
     by the user. Alternatively, you can use input_message_content to send a
     message with the specified content instead of the location."""
 
-    def __init__(self, id_, latitude, longitude, title, live_period=None,
-                 reply_markup=None, input_message_content=None, thumb_url=None,
-                 thumb_width=None, thumb_height=None):
-        super().__init__('location', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        latitude,
+        longitude,
+        title,
+        live_period=None,
+        reply_markup=None,
+        input_message_content=None,
+        thumb_url=None,
+        thumb_width=None,
+        thumb_height=None,
+    ):
+        super().__init__("location", id_, reply_markup)
 
         self.latitude = latitude
         self.longitude = longitude

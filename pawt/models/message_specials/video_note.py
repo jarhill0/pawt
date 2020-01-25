@@ -6,11 +6,11 @@ class VideoNote(FileWrapper, Sendable):
     def __init__(self, tg, data):
         super().__init__(tg, data)
 
-        self.length = data['length']
-        self.duration = data['duration']
+        self.length = data["length"]
+        self.duration = data["duration"]
 
-        if data.get('thumb'):
-            self.thumb = tg.photo_size(data=data['thumb'])
+        if data.get("thumb"):
+            self.thumb = tg.photo_size(data=data["thumb"])
         else:
             self.thumb = None
 

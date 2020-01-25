@@ -2,7 +2,7 @@ from pawt import Telegram
 from pawt.exceptions import BadArgument
 from pawt.models import MaskPosition, Sticker
 
-TG = Telegram('')
+TG = Telegram("")
 
 
 def test_attrs():
@@ -12,15 +12,13 @@ def test_attrs():
 
 
 def test_mask_position_validation():
-    mask_position = dict(point='forehead', x_shift=-1.5,
-                         y_shift=2 / 3, scale=2.0)
-    data = dict(width=512, height=510, file_id=12345,
-                mask_position=mask_position)
+    mask_position = dict(point="forehead", x_shift=-1.5, y_shift=2 / 3, scale=2.0)
+    data = dict(width=512, height=510, file_id=12345, mask_position=mask_position)
     sticker = Sticker(TG, data=data)
 
     assert sticker.mask_position.to_dict() == mask_position
 
-    mask_position['point'] = 'invalid location'
+    mask_position["point"] = "invalid location"
     try:
         Sticker(TG, data=data)
     except BadArgument:
@@ -31,18 +29,18 @@ def test_mask_position_validation():
 
 def test_mask_position():
     try:
-        mp = MaskPosition({'a': 1}, 13)
-        assert False, 'should raise BadArgument'
+        mp = MaskPosition({"a": 1}, 13)
+        assert False, "should raise BadArgument"
     except BadArgument:
         pass
 
     try:
         mp = MaskPosition()
-        assert False, 'should raise BadArgument'
+        assert False, "should raise BadArgument"
     except BadArgument:
         pass
 
 
 def test_repr():
     sticker = Sticker(TG, data=dict(width=512, height=510, file_id=12345))
-    assert repr(sticker) == '<Sticker 12345>'
+    assert repr(sticker) == "<Sticker 12345>"

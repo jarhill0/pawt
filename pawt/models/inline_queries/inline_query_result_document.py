@@ -8,11 +8,21 @@ class InlineQueryResultDocument(InlineQueryResult):
     instead of the file. Currently, only .PDF and .ZIP files can be sent
     using this method."""
 
-    def __init__(self, id_, title, document_url, mime_type, caption=None,
-                 description=None, reply_markup=None,
-                 input_message_content=None, thumb_url=None, thumb_width=None,
-                 thumb_height=None):
-        super().__init__('document', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        title,
+        document_url,
+        mime_type,
+        caption=None,
+        description=None,
+        reply_markup=None,
+        input_message_content=None,
+        thumb_url=None,
+        thumb_width=None,
+        thumb_height=None,
+    ):
+        super().__init__("document", id_, reply_markup)
 
         self.title = title
         self.document_url = document_url

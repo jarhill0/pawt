@@ -2,8 +2,9 @@ from .command_bot import CommandBot
 
 
 class MappedCommandBot(CommandBot):
-    def __init__(self, token, text_command_map, caption_command_map, *,
-                 url=None, session=None):
+    def __init__(
+        self, token, text_command_map, caption_command_map, *, url=None, session=None
+    ):
         super().__init__(token, url=url, session=session)
         self.text_command_map = text_command_map or dict()
         self.caption_command_map = caption_command_map or dict()

@@ -1,8 +1,8 @@
 from pawt import Telegram
 from pawt.models import ChatPhoto, File
 
-DATA = dict(small_file_id='abcdef123', big_file_id='ghijkl456')
-TG = Telegram('')
+DATA = dict(small_file_id="abcdef123", big_file_id="ghijkl456")
+TG = Telegram("")
 
 
 def test_chat_photo():

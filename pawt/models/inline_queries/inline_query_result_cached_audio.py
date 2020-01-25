@@ -7,9 +7,15 @@ class InlineQueryResultCachedAudio(InlineQueryResult):
     can use input_message_content to send a message with the specified content
     instead of the audio."""
 
-    def __init__(self, id_, audio_file_id, caption=None,
-                 reply_markup=None, input_message_content=None):
-        super().__init__('audio', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        audio_file_id,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("audio", id_, reply_markup)
 
         self.audio_file_id = audio_file_id
         self.caption = caption

@@ -6,11 +6,21 @@ class InlineQueryResultVenue(InlineQueryResult):
     Alternatively, you can use input_message_content to send a message with
     the specified content instead of the venue."""
 
-    def __init__(self, id_, latitude, longitude, title, address,
-                 foursquare_id=None, reply_markup=None,
-                 input_message_content=None, thumb_url=None, thumb_width=None,
-                 thumb_height=None):
-        super().__init__('venue', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        latitude,
+        longitude,
+        title,
+        address,
+        foursquare_id=None,
+        reply_markup=None,
+        input_message_content=None,
+        thumb_url=None,
+        thumb_width=None,
+        thumb_height=None,
+    ):
+        super().__init__("venue", id_, reply_markup)
 
         self.latitude = latitude
         self.longitude = longitude

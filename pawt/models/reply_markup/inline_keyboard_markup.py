@@ -5,29 +5,39 @@ def inline_keyboard_markup(inline_keyboard):
     return dict(inline_keyboard=inline_keyboard)
 
 
-def inline_keyboard_button(text, *, url=None, callback_data=None,
-                           switch_inline_query=None,
-                           switch_inline_query_current_chat=None,
-                           callback_game=None, pay=None):
-    if (url, callback_data, switch_inline_query,
-        switch_inline_query_current_chat, callback_game,
-        pay).count(None) != 5:
-        raise BadArgument('Exactly one parameter besides text should be '
-                          'provided.')
+def inline_keyboard_button(
+    text,
+    *,
+    url=None,
+    callback_data=None,
+    switch_inline_query=None,
+    switch_inline_query_current_chat=None,
+    callback_game=None,
+    pay=None
+):
+    if (
+        url,
+        callback_data,
+        switch_inline_query,
+        switch_inline_query_current_chat,
+        callback_game,
+        pay,
+    ).count(None) != 5:
+        raise BadArgument("Exactly one parameter besides text should be " "provided.")
     out = dict(text=text)
     if url is not None:
-        out['url'] = url
+        out["url"] = url
     if callback_data is not None:
-        out['callback_data'] = callback_data
+        out["callback_data"] = callback_data
     if switch_inline_query is not None:
-        out['switch_inline_query'] = switch_inline_query
+        out["switch_inline_query"] = switch_inline_query
     if switch_inline_query_current_chat is not None:
         shorter_var_name = switch_inline_query_current_chat
-        out['switch_inline_query_current_chat'] = shorter_var_name
+        out["switch_inline_query_current_chat"] = shorter_var_name
     if callback_game is not None:
-        out['callback_game'] = callback_game
+        out["callback_game"] = callback_game
     if pay is not None:  # can be False
-        out['pay'] = pay
+        out["pay"] = pay
 
     return out
 
@@ -37,7 +47,7 @@ def callback_game():
     return dict()
 
 
-class InlineKeyboardMarkupBuilder():
+class InlineKeyboardMarkupBuilder:
     def __init__(self):
         self.keyboard = [[]]
 

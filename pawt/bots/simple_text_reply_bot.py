@@ -3,8 +3,7 @@ from ..models.message_specials import BotCommand
 
 
 class SimpleTextReplyBot(TelegramBotInterface):
-    def __init__(self, token, mapping, ignore_case=True, *, url=None,
-                 session=None):
+    def __init__(self, token, mapping, ignore_case=True, *, url=None, session=None):
         super().__init__(token, url=url, session=session)
 
         self.ignore_case = ignore_case

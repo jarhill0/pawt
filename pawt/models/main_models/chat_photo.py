@@ -13,5 +13,5 @@ class ChatPhoto(PAWTBase):
     def __init__(self, tg, data):
         super().__init__(tg)
 
-        self._small_file_id = data['small_file_id']
-        self._big_file_id = data['big_file_id']
+        self._small_file_id = data["small_file_id"]
+        self._big_file_id = data["big_file_id"]

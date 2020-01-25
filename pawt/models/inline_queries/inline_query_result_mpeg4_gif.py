@@ -7,10 +7,20 @@ class InlineQueryResultMpeg4Gif(InlineQueryResult):
     optional caption. Alternatively, you can use input_message_content to send a
     message with the specified content instead of the animation."""
 
-    def __init__(self, id_, mpeg4_url, thumb_url, mpeg4_width=None,
-                 mpeg4_height=None, mpeg4_duration=None, title=None,
-                 caption=None, reply_markup=None, input_message_content=None):
-        super().__init__('mpeg4_gif', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        mpeg4_url,
+        thumb_url,
+        mpeg4_width=None,
+        mpeg4_height=None,
+        mpeg4_duration=None,
+        title=None,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("mpeg4_gif", id_, reply_markup)
 
         self.mpeg4_url = mpeg4_url
         self.thumb_url = thumb_url

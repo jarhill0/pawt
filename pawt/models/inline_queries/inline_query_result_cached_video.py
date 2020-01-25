@@ -7,9 +7,17 @@ class InlineQueryResultCachedVideo(InlineQueryResult):
     Alternatively, you can use input_message_content to send a message with the
     specified content instead of the video."""
 
-    def __init__(self, id_, video_file_id, title, description=None,
-                 caption=None, reply_markup=None, input_message_content=None):
-        super().__init__('video', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        video_file_id,
+        title,
+        description=None,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("video", id_, reply_markup)
 
         self.video_file_id = video_file_id
         self.title = title

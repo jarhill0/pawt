@@ -7,9 +7,16 @@ class InlineQueryResultCachedVoice(InlineQueryResult):
     can use input_message_content to send a message with the specified content
     instead of the voice message."""
 
-    def __init__(self, id_, voice_file_id, title, caption=None,
-                 reply_markup=None, input_message_content=None):
-        super().__init__('voice', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        voice_file_id,
+        title,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("voice", id_, reply_markup)
 
         self.voice_file_id = voice_file_id
         self.title = title

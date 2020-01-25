@@ -2,8 +2,7 @@ import requests
 
 from .const import API_PATH, BASE_PATH
 from .exceptions import APIException
-from .models import Chat, File, Message, PhotoSize, Sticker, StickerSet, Update, \
-    User
+from .models import Chat, File, Message, PhotoSize, Sticker, StickerSet, Update, User
 
 
 class Telegram:
@@ -12,9 +11,9 @@ class Telegram:
     @staticmethod
     def _request_decoder(response):
         decoded = response.json()
-        if not decoded['ok']:
+        if not decoded["ok"]:
             raise APIException(decoded)
-        return decoded['result']
+        return decoded["result"]
 
     def __init__(self, token, *, url=None, session=None, max_retries=3):
         """Create a Telegram instance.
@@ -30,8 +29,8 @@ class Telegram:
         self._url = url or BASE_PATH
 
         self.path = self._url.format(token=token)
-        if not self.path.endswith('/'):
-            self.path += '/'
+        if not self.path.endswith("/"):
+            self.path += "/"
 
         self.session = session or requests.Session()
 
@@ -71,21 +70,20 @@ class Telegram:
         return self._request_decoder(response)
 
     def get_me(self):
-        u = self.get(API_PATH['get_me'])
+        u = self.get(API_PATH["get_me"])
         return self.user(data=u)
 
-    def get_updates(self, offset=None, limit=None, timeout=None,
-                    allowed_updates=None):
+    def get_updates(self, offset=None, limit=None, timeout=None, allowed_updates=None):
         data = dict()
         if offset:
-            data['offset'] = offset
+            data["offset"] = offset
         if limit:
-            data['limit'] = limit
+            data["limit"] = limit
         if timeout:
-            data['timeout'] = timeout
+            data["timeout"] = timeout
         if allowed_updates:
-            data['allowed_updates'] = allowed_updates
-        response = self.get(API_PATH['get_updates'], params=data)
+            data["allowed_updates"] = allowed_updates
+        response = self.get(API_PATH["get_updates"], params=data)
         return [Update(self, ud) for ud in response]
 
     def message(self, data):
@@ -96,8 +94,7 @@ class Telegram:
 
     def post(self, path, data=None, files=None):
         post = self.session.post
-        response = self._requestor(post, self.path + path, data=data,
-                                   files=files)
+        response = self._requestor(post, self.path + path, data=data, files=files)
         return self._request_decoder(response)
 
     def sticker(self, data):

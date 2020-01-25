@@ -8,9 +8,16 @@ class InlineQueryResultCachedMpeg4Gif(InlineQueryResult):
     can use input_message_content to send a message with the specified content
     instead of the animation."""
 
-    def __init__(self, id_, mpeg4_file_id, title=None, caption=None,
-                 reply_markup=None, input_message_content=None):
-        super().__init__('mpeg4_gif', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        mpeg4_file_id,
+        title=None,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("mpeg4_gif", id_, reply_markup)
 
         self.mpeg4_file_id = mpeg4_file_id
         self.title = title

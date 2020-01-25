@@ -7,10 +7,20 @@ class InlineQueryResultGif(InlineQueryResult):
     you can use input_message_content to send a message with the specified
     content instead of the animation."""
 
-    def __init__(self, id_, gif_url, thumb_url, gif_width=None,
-                 gif_height=None, gif_duration=None, title=None, caption=None,
-                 reply_markup=None, input_message_content=None):
-        super().__init__('gif', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        gif_url,
+        thumb_url,
+        gif_width=None,
+        gif_height=None,
+        gif_duration=None,
+        title=None,
+        caption=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("gif", id_, reply_markup)
 
         self.gif_url = gif_url
         self.thumb_url = thumb_url

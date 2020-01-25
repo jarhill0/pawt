@@ -5,8 +5,7 @@ from .inline_query_result_audio import InlineQueryResultAudio
 from .inline_query_result_cached_audio import InlineQueryResultCachedAudio
 from .inline_query_result_cached_document import InlineQueryResultCachedDocument
 from .inline_query_result_cached_gif import InlineQueryResultCachedGif
-from .inline_query_result_cached_mpeg4_gif import \
-    InlineQueryResultCachedMpeg4Gif
+from .inline_query_result_cached_mpeg4_gif import InlineQueryResultCachedMpeg4Gif
 from .inline_query_result_cached_photo import InlineQueryResultCachedPhoto
 from .inline_query_result_cached_sticker import InlineQueryResultCachedSticker
 from .inline_query_result_cached_video import InlineQueryResultCachedVideo

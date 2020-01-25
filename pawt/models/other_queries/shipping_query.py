@@ -18,22 +18,24 @@ class ShippingQuery(PAWTBase):
     def __init__(self, tg, data):
         super().__init__(tg)
 
-        self.id = data['id']
-        self.user = tg.user(data=data['from'])
+        self.id = data["id"]
+        self.user = tg.user(data=data["from"])
         self.from_ = self.user
-        self.invoice_payload = data['invoice_payload']
-        self.shipping_address = ShippingAddress(tg, data['shipping_address'])
+        self.invoice_payload = data["invoice_payload"]
+        self.shipping_address = ShippingAddress(tg, data["shipping_address"])
 
     def __repr__(self):
-        return '<ShippingQuery {}>'.format(self.id)
+        return "<ShippingQuery {}>".format(self.id)
 
     def answer(self, ok, shipping_options=None, error_message=None):
         if not (bool(shipping_options) == bool(ok) != bool(error_message)):
-            raise BadArgument('shipping_options only must be provided if ok, '
-                              'otherwise error_message only')
+            raise BadArgument(
+                "shipping_options only must be provided if ok, "
+                "otherwise error_message only"
+            )
         info = dict(shipping_query_id=self.id, ok=ok)
         if ok:
-            info['shipping_options'] = dumps(shipping_options)
+            info["shipping_options"] = dumps(shipping_options)
         else:
-            info['error_message'] = error_message
-        return self._tg.post(API_PATH['answer_shipping_query'], data=info)
+            info["error_message"] = error_message
+        return self._tg.post(API_PATH["answer_shipping_query"], data=info)

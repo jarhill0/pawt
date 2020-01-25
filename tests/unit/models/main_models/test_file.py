@@ -26,12 +26,12 @@ def test_num_args():
 
 def test_repr():
     file = File(None, ID)
-    assert repr(file) == '<File 12345>'
+    assert repr(file) == "<File 12345>"
 
 
 def test_eq():
     file1 = File(None, 12345)
-    file2 = File(None, '12345')
+    file2 = File(None, "12345")
     file3 = File(None, 123456)
 
     assert file1 == file1
@@ -39,4 +39,4 @@ def test_eq():
     assert file1 != file3
 
     assert file1 == 12345 == file2
-    assert file1 == '12345' == file2
+    assert file1 == "12345" == file2

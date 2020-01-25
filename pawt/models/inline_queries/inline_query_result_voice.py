@@ -7,10 +7,17 @@ class InlineQueryResultVoice(InlineQueryResult):
     Alternatively, you can use input_message_content to send a message with
     the specified content instead of the the voice message."""
 
-    def __init__(self, id_, voice_url, title, caption=None,
-                 voice_duration=None, reply_markup=None,
-                 input_message_content=None):
-        super().__init__('voice', id_, reply_markup)
+    def __init__(
+        self,
+        id_,
+        voice_url,
+        title,
+        caption=None,
+        voice_duration=None,
+        reply_markup=None,
+        input_message_content=None,
+    ):
+        super().__init__("voice", id_, reply_markup)
 
         self.voice_url = voice_url
         self.title = title

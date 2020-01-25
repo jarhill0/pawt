@@ -1,7 +1,7 @@
 from pawt import Telegram
 from pawt.models import PhotoSize
 
-TG = Telegram('')
+TG = Telegram("")
 DICT_1 = dict(file_id=12345, width=640, height=999)
 DICT_2 = dict(file_id=12345, width=640, height=999, file_size=123)
 
@@ -42,7 +42,7 @@ def test_gt():
         assert False, "These types are not comparable"
 
     try:
-        bigger > '3'
+        bigger > "3"
     except TypeError:
         pass
     else:
@@ -58,4 +58,4 @@ def test_gt():
 
 def test_repr():
     ps = PhotoSize(TG, DICT_1)
-    assert repr(ps) == '<PhotoSize 12345>'
+    assert repr(ps) == "<PhotoSize 12345>"
